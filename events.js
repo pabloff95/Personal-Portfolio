@@ -9,7 +9,7 @@ window.addEventListener("load", function() {
     let stopMouse;
 
     // Mouse move on canvas
-    document.querySelector("header").addEventListener("mousemove", function(event){
+    document.querySelector("canvas").addEventListener("mousemove", function(event){
         clearInterval(stopMouse); // stop setinterval (avoids event mousemove from triggering multiple times before)
         context.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
         // Add position to trail (last element --> head)
