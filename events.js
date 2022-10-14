@@ -9,7 +9,7 @@ window.addEventListener("load", function() {
     let stopMouse;
 
     // Mouse move on canvas
-    canvas.addEventListener("mousemove", function(event){
+    document.querySelector("header").addEventListener("mousemove", function(event){
         clearInterval(stopMouse); // stop setinterval (avoids event mousemove from triggering multiple times before)
         context.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
         // Add position to trail (last element --> head)
@@ -20,8 +20,8 @@ window.addEventListener("load", function() {
         let i = 0;
         let radius = RADIUS;
         mouseTrail.forEach(position => {
-            addCircle(position["x"],position["y"]+(i-TRAIL_LENGTH), context, trailColours[i], radius);
-            addCircle(position["x"],position["y"]+(TRAIL_LENGTH-i), context, trailColours[i], radius);
+            addCircle(position["x"],position["y"]+((i/2)-(TRAIL_LENGTH/2)), context, trailColours[i], radius);
+            addCircle(position["x"],position["y"]+((TRAIL_LENGTH/2)-(i/2)), context, trailColours[i], radius);
             i++;
             radius -= REDUCE_RADIUS;
         });    
@@ -31,8 +31,8 @@ window.addEventListener("load", function() {
         let mouseRadius = RADIUS - (REDUCE_RADIUS*TRAIL_LENGTH);
         stopMouse = setInterval(() => {
             if (x < mouseTrail.length) {
-                addCircle(mouseTrail[x]["x"],mouseTrail[x]["y"]+(x-TRAIL_LENGTH), context, "black", radius); // Removes trail starting from end 
-                addCircle(mouseTrail[x]["x"],mouseTrail[x]["y"]+(TRAIL_LENGTH-x), context, "black", radius); // Removes trail starting from end 
+                addCircle(mouseTrail[x]["x"],mouseTrail[x]["y"]+((x/2)-(TRAIL_LENGTH/2)), context, "black", radius); // Removes trail starting from end 
+                addCircle(mouseTrail[x]["x"],mouseTrail[x]["y"]+((TRAIL_LENGTH/2)-(x/2)), context, "black", radius); // Removes trail starting from end 
                 addCircle(mousePosition["x"],mousePosition["y"], context, trailColours.at(-1), mouseRadius); // Adds the mouse trail "head"
                 radius -= REDUCE_RADIUS;
             } else {
