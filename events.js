@@ -1,9 +1,10 @@
 window.addEventListener("load", function() {
     const canvas = document.getElementById("canvas-element");
     const context = canvas.getContext("2d");
-    const TRAIL_LENGTH = 10
-    const RADIUS = 10;
-    const REDUCE_RADIUS = 0.5;
+    const TRAIL_LENGTH = 20;
+    const RADIUS_MAX = 7;
+    const RADIUS_MIN = 2;
+    const POSITION_RANDOM = 10;
     let mouseTrail = [];
     let trailColours = getColours(TRAIL_LENGTH);
     let stopMouse;
@@ -13,34 +14,28 @@ window.addEventListener("load", function() {
         clearInterval(stopMouse); // stop setinterval (avoids event mousemove from triggering multiple times before)
         context.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
         // Add position to trail (last element --> head)
-        let mousePosition = getMousePosition(canvas, event);
+        let mousePosition = getMousePosition(canvas, event, POSITION_RANDOM);
         mouseTrail.push(mousePosition);
         if (mouseTrail.length > TRAIL_LENGTH) mouseTrail.shift();
         // Draw trail
         let i = 0;
-        let radius = RADIUS;
         mouseTrail.forEach(position => {
-            addCircle(position["x"],position["y"]+((i/2)-(TRAIL_LENGTH/2)), context, trailColours[i], radius);
-            addCircle(position["x"],position["y"]+((TRAIL_LENGTH/2)-(i/2)), context, trailColours[i], radius);
+            position["color"] = trailColours[i];
+            position["radius"] = getRandom(RADIUS_MAX, RADIUS_MIN);
+            addCircle(position["x"], position["y"], context, position["color"], position["radius"]);
             i++;
-            radius -= REDUCE_RADIUS;
+
         });    
         // If mouse stops --> time gets to 0 and deletes trail leaving just the mouse pointer's circle
-        let x = 0;
-        radius = RADIUS;
-        let mouseRadius = RADIUS - (REDUCE_RADIUS*TRAIL_LENGTH);
         stopMouse = setInterval(() => {
-            /*if (x < mouseTrail.length) {
-                addCircle(mouseTrail[x]["x"],mouseTrail[x]["y"]+((x/2)-(TRAIL_LENGTH/2)), context, "black", radius); // Removes trail starting from end 
-                addCircle(mouseTrail[x]["x"],mouseTrail[x]["y"]+((TRAIL_LENGTH/2)-(x/2)), context, "black", radius); // Removes trail starting from end 
-                addCircle(mousePosition["x"],mousePosition["y"], context, trailColours.at(-1), mouseRadius); // Adds the mouse trail "head"
-                radius -= REDUCE_RADIUS;
-            } else {
-                mouseTrail = [];
-            }*/
             context.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
-            x++;
-        }, 1000 * 0.1);
+            mouseTrail.shift();
+            let j = 0;
+            mouseTrail.forEach(circle => {
+                addCircle(circle["x"], circle["y"], context, circle["color"], circle["radius"]);
+                j++;
+            });
+        }, 1000 * 0.05);
     });
 
     // Mouse out of canvas
@@ -61,33 +56,36 @@ const addCircle = (x, y, context, colour, radius) => {
 }
 
 // Get mouse position in canvas
-const getMousePosition = (canvas, event) => {
+const getMousePosition = (canvas, event, dispersion) => {
     let rect = canvas.getBoundingClientRect();
     // Get ratio
     let scaleX = canvas.width / rect.width;
     let scaleY = canvas.height / rect.height;
+    // Add random dispersion to the points
+    let x = (event.clientX - rect.left) * scaleX;
+    let y = (event.clientY - rect.top) * scaleY;
 
     return {
-        "x" : (event.clientX - rect.left) * scaleX,
-        "y" : (event.clientY - rect.top) * scaleY
+        "x" : getRandom(x + dispersion, x - dispersion),
+        "y" : getRandom(y + dispersion, y - dispersion)
     };
 }
 
 // Get a pattern of RGB colours
 const getColours = (num) => {
     let colours = [];
-    //let interval = 255 / num;
-    let interval = (168 - 130) / num;
     for (let i = 0; i < num; i++) {
-        //let colour = "rgb(0, 0, " + Math.round(i*interval) +")";
-        //let colour = "rgb(8, " + Math.round(i*interval) +", 136)"; 130 - 168
-        let greenValue = Math.round(130 + i*interval);
-        let colour = "rgb(8, " + greenValue +", 136)";
+        let colour = "rgb("+ getRandom(0,255) +", "+ getRandom(0,255) +", "+ getRandom(0,255) +")";
         colours.push(colour);
     };
-
     return colours;
 }
 
+// Get a random radius in range
+const getRandom = (max, min) => {
+    return Math.round(Math.random() * (max - min)) + min;
+}
+
+// New guide: https://codepen.io/renatorib/pen/xxWemq
 // https://codepen.io/farisk/pen/bXvejG
 // https://www.kirupa.com/canvas/creating_motion_trails.htm
