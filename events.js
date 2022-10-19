@@ -1,8 +1,8 @@
 window.addEventListener("load", function() {
     const canvas = document.getElementById("canvas-element");
     const context = canvas.getContext("2d");
-    const TRAIL_LENGTH = 20
-    const RADIUS = 12;
+    const TRAIL_LENGTH = 10
+    const RADIUS = 10;
     const REDUCE_RADIUS = 0.5;
     let mouseTrail = [];
     let trailColours = getColours(TRAIL_LENGTH);
@@ -30,16 +30,17 @@ window.addEventListener("load", function() {
         radius = RADIUS;
         let mouseRadius = RADIUS - (REDUCE_RADIUS*TRAIL_LENGTH);
         stopMouse = setInterval(() => {
-            if (x < mouseTrail.length) {
+            /*if (x < mouseTrail.length) {
                 addCircle(mouseTrail[x]["x"],mouseTrail[x]["y"]+((x/2)-(TRAIL_LENGTH/2)), context, "black", radius); // Removes trail starting from end 
                 addCircle(mouseTrail[x]["x"],mouseTrail[x]["y"]+((TRAIL_LENGTH/2)-(x/2)), context, "black", radius); // Removes trail starting from end 
                 addCircle(mousePosition["x"],mousePosition["y"], context, trailColours.at(-1), mouseRadius); // Adds the mouse trail "head"
                 radius -= REDUCE_RADIUS;
             } else {
                 mouseTrail = [];
-            }
+            }*/
+            context.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
             x++;
-        }, 1000 * 0.025);
+        }, 1000 * 0.1);
     });
 
     // Mouse out of canvas
@@ -49,21 +50,6 @@ window.addEventListener("load", function() {
     });
     
 });
-
-/*const drawPath = (context, trail) => {
-    let controlPoint1 = trail.at(trail.length/2);
-    let controlPoint2 = trail.at((trail.length/3)*2);
-
-    context.fillStyle = "red";
-    context.beginPath();
-    context.moveTo(trail.at(-1)["x"], trail.at(-1)["y"]);
-    context.lineTo(trail[0]["x"], trail[0]["y"]);
-    context.bezierCurveTo(controlPoint1["x"], controlPoint1["y"], controlPoint2["x"], controlPoint2["y"], trail[0]["x"], trail[0]["y"]); 
-    context.lineTo(trail.at(-1)["x"], trail.at(-1)["y"]);
-    context.closePath();
-    context.fill();
-}*/
-
 
 // Draw a circle in canvas
 const addCircle = (x, y, context, colour, radius) => {   
@@ -90,9 +76,13 @@ const getMousePosition = (canvas, event) => {
 // Get a pattern of RGB colours
 const getColours = (num) => {
     let colours = [];
-    let interval = 255 / num;
-    for (let i = interval; i < 256; i+=interval) {
-        let colour = "rgb(0, 0, " + Math.round(i) +")";
+    //let interval = 255 / num;
+    let interval = (168 - 130) / num;
+    for (let i = 0; i < num; i++) {
+        //let colour = "rgb(0, 0, " + Math.round(i*interval) +")";
+        //let colour = "rgb(8, " + Math.round(i*interval) +", 136)"; 130 - 168
+        let greenValue = Math.round(130 + i*interval);
+        let colour = "rgb(8, " + greenValue +", 136)";
         colours.push(colour);
     };
 

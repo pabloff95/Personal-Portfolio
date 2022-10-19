@@ -1,3 +1,10 @@
+@import url('https://fonts.googleapis.com/css?family=Monoton');
+:root{
+    --main: #4FE1C4;
+    --main-dark: #08A888;
+    --bg-color: black;
+}
+
 body, html{
     margin: 0;
     padding: 0;
@@ -8,39 +15,77 @@ header{
     width: 100%;
     height: 100%;
     max-height: 500px;
-    background-color: black;
+    background-color: var(--bg-color);
+    position: relative;
+}
+#header-text-container{
+    position: absolute;
+    width: fit-content;
+    margin: 5%;
 }
 /*Main title element*/
 #page-title{
     /*Positioning and others*/
-    position: absolute;
-    margin: 2.5% 5%;
+    padding: 4%;
     user-select: none;
-    padding: 2%;
     border-top: 5px solid currentColor;
     border-bottom: 5px solid currentColor;
-    background-color: black;
+    border-radius: 2.5px;    
     /*Font*/
     color: white;
     font-size: 4rem;
     font-family: "Gill Sans", sans-serif;
     font-weight: 800;    
 }
+.border-shadow{
+    height: 5px;
+    background-color: var(--main);
+    width: 100%;
+    margin-left: 5%;
+    border-radius: 10px;
+}
+.top{
+    position: absolute;
+    margin-top: calc(5px + 1.5%);
+}
+.bottom{
+    margin-top: 1.5%;
+}
 /*Main title element: sentence row*/
 .title-row{
-    height: 6.5rem;
-    width: 32.5rem;
     display: flex;
     flex-direction: row;
+    height: 6rem;
+    width: 35rem;
 }
 /*Main title element: capital letters*/
 .main-letter{
-    color: red;
+    font-family: "Monoton", Helvetica, sans-serif;
+    font-weight: 400;   
 }
+@supports (-webkit-background-clip: text) {
+	.main-letter {  
+		color: transparent;
+		background: linear-gradient(-45deg, var(--main) 50%, var(--main-dark) 0);
+		-webkit-background-clip: text;
+        background-clip: text;
+	}
+}
+@supports (-webkit-background-clip: text) {
+	.main-letter:hover {  
+		color: transparent;
+		background: linear-gradient(-45deg, orange 50%, red 0);
+        font-size: 4.25rem;
+		-webkit-background-clip: text;
+        background-clip: text;
+	}
+}
+
 .letter:hover{
     color: orange;
     font-size: 4.25rem;
 }
+
 /*Subtitle element*/
 #page-subtitle{
     color: white;
