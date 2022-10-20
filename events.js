@@ -1,41 +1,51 @@
 window.addEventListener("load", function() {
     const canvas = document.getElementById("canvas-element");
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     const context = canvas.getContext("2d");
-    const TRAIL_LENGTH = 20;
-    const RADIUS_MAX = 7;
-    const RADIUS_MIN = 2;
-    const POSITION_RANDOM = 10;
+    const TRAIL_LENGTH = 50;
+    const RADIUS_MAX = 35;
+    const RADIUS_MIN = 10;
+    const POSITION_RANDOM = 50;
     let mouseTrail = [];
     let trailColours = getColours(TRAIL_LENGTH);
     let stopMouse;
+    const DISTANCE_CHECK = 25;
 
     // Mouse move on canvas
     document.querySelector("canvas").addEventListener("mousemove", function(event){
-        clearInterval(stopMouse); // stop setinterval (avoids event mousemove from triggering multiple times before)
-        context.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
         // Add position to trail (last element --> head)
         let mousePosition = getMousePosition(canvas, event, POSITION_RANDOM);
-        mouseTrail.push(mousePosition);
-        if (mouseTrail.length > TRAIL_LENGTH) mouseTrail.shift();
-        // Draw trail
-        let i = 0;
-        mouseTrail.forEach(position => {
-            position["color"] = trailColours[i];
-            position["radius"] = getRandom(RADIUS_MAX, RADIUS_MIN);
-            addCircle(position["x"], position["y"], context, position["color"], position["radius"]);
-            i++;
-
-        });    
-        // If mouse stops --> time gets to 0 and deletes trail leaving just the mouse pointer's circle
-        stopMouse = setInterval(() => {
+        if (mouseTrail.length == 0 ){
+            mouseTrail.push(mousePosition);
+        } else if (outOfRange((mouseTrail.at(-1)["x"] - DISTANCE_CHECK), (mouseTrail.at(-1)["x"] + DISTANCE_CHECK), mousePosition["x"])
+            && outOfRange((mouseTrail.at(-1)["y"] - DISTANCE_CHECK), (mouseTrail.at(-1)["y"] + DISTANCE_CHECK), mousePosition["y"])
+        ) {
+            clearInterval(stopMouse); // stop setinterval (avoids event mousemove from triggering multiple times before)
             context.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
-            mouseTrail.shift();
-            let j = 0;
-            mouseTrail.forEach(circle => {
-                addCircle(circle["x"], circle["y"], context, circle["color"], circle["radius"]);
-                j++;
-            });
-        }, 1000 * 0.05);
+            mouseTrail.push(mousePosition);             
+
+            if (mouseTrail.length > TRAIL_LENGTH) mouseTrail.shift();
+            // Draw trail        
+            let i = 0;
+            mouseTrail.forEach(position => {
+                position["color"] = trailColours[i];
+                position["radius"] = getRandom(RADIUS_MAX, RADIUS_MIN);
+                addCircle(position["x"], position["y"], context, position["color"], position["radius"]);
+                i++;
+            });            
+            // If mouse stops --> time gets to 0 and deletes trail leaving just the mouse pointer's circle
+            stopMouse = setInterval(() => {
+                context.clearRect(0, 0, canvas.width, canvas.height); // Clear canvas
+                mouseTrail.shift();
+                let j = 0;
+                mouseTrail.forEach(circle => {
+                    circle["radius"] = (circle["radius"] > 1) ? circle["radius"] - 1 : 0;
+                    addCircle(circle["x"], circle["y"], context, circle["color"], circle["radius"]);
+                    j++;
+                });
+            }, 1000 * 0.05);
+        }   
     });
 
     // Mouse out of canvas
@@ -85,6 +95,12 @@ const getColours = (num) => {
 const getRandom = (max, min) => {
     return Math.round(Math.random() * (max - min)) + min;
 }
+
+// Check that value is not in range
+const outOfRange = (min, max, value) => {
+    return (value < min || value > max) ? true : false;
+}
+
 
 // New guide: https://codepen.io/renatorib/pen/xxWemq
 // https://codepen.io/farisk/pen/bXvejG
