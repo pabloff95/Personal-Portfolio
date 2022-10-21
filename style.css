@@ -3,24 +3,57 @@
     --main: #4FE1C4;
     --main-dark: #08A888;
     --bg-color: black;
+    --contrast: orange;
+    --font: "Gill Sans", sans-serif;
 }
-
 body, html{
     margin: 0;
     padding: 0;
-}
-
-/*--- HEADER ---*/
-header{
     width: 100%;
     height: 100%;
-    max-height: 500px;
+    overflow-x: hidden;
+}
+/*----------------------------- BUTTON SECTION --------------------*/
+nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-align: center;
+    background-color: var(--bg-color);
+}
+.menu-button{
+    width: 20%;
+    background-color: var(--main);
+    color: var(--bg-color);
+    font-family: var(--font);
+    font-size: 1.5vmax;
+    font-weight: 500;
+    border: var(--bg-color) solid 3px;
+    border-radius: 5px;    
+}
+.menu-button:hover{
+    background-color: var(--contrast);
+    transform: scale(1.1)
+}
+
+
+/*-----------------------------------------------------------------*/
+/*----------------------------- HEADER SECTION --------------------*/
+header{
+    width: 100%;
+    height: fit-content;
     background-color: var(--bg-color);
     position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+#header-text-container, canvas{
+    grid-row-start: 1;
+    grid-column-start: 1;
 }
 #header-text-container{
-    position: absolute;
     width: fit-content;
+    position: relative;
     margin: 5%;
 }
 /*Main title element*/
@@ -33,8 +66,8 @@ header{
     border-radius: 2.5px;    
     /*Font*/
     color: white;
-    font-size: 4rem;
-    font-family: "Gill Sans", sans-serif;
+    font-size: 4vmax;
+    font-family: var(--font);
     font-weight: 800;    
 }
 .border-shadow{
@@ -55,8 +88,8 @@ header{
 .title-row{
     display: flex;
     flex-direction: row;
-    height: 6rem;
-    width: 35rem;
+    height: 6vmax;
+    width: 35vmax;
 }
 /*Main title element: capital letters*/
 .main-letter{
@@ -74,34 +107,40 @@ header{
 @supports (-webkit-background-clip: text) {
 	.main-letter:hover {  
 		color: transparent;
-		background: linear-gradient(-45deg, orange 50%, red 0);
-        font-size: 4.25rem;
+		background: linear-gradient(-45deg, var(--contrast) 50%, red 0);
+        font-size: 4.25vmax;
 		-webkit-background-clip: text;
         background-clip: text;
 	}
 }
 
 .letter:hover{
-    color: orange;
-    font-size: 4.25rem;
+    color: var(--contrast);
+    font-size: 4.25vmax;
 }
 
 /*Subtitle element*/
 #page-subtitle{
     color: white;
-    font-size: 1.5rem;
+    font-size: 1.5vmax;
     font-family: "Gill Sans", sans-serif;
     font-weight: 200;
     margin: 0;
+    position: relative;
 }
 
 /*--- CANVAS ---*/
 canvas{
     width: 100%;
     height: 100%;
-    max-height: 500px;
+    position: absolute;
+    z-index: 1;
+}
+.letter, .main-letter, #page-subtitle{
+    z-index: 2;
 }
 
+/*---------------------------------------------------------------------*/
 
 
 
