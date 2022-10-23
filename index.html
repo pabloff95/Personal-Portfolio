@@ -5,37 +5,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="mouse-trail.js"></script>
     <script src="events.js"></script>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav>
-        <button class="menu-button">HOME</button>
-        <button class="menu-button">PROJECTS</button>
-        <button class="menu-button">BACKGROUND</button>
-        <button class="menu-button">CONTACT</button>
-        <button class="menu-button">OTHER</button>
-    </nav>
-    <header>
-        <div id="header-text-container">
-            <div class="border-shadow top"></div>    
-                <div id="page-title">
-                    <div id="title-section">
-                        <div class="title-row">
-                            <span class="main-letter">W</span><span class="letter">e</span><span class="letter">l</span><span class="letter">c</span><span class="letter">o</span><span class="letter">m</span><span class="letter">e</span><span class="letter">!</span><br>
+    <main>
+        <nav>
+            <div id="logo">
+                <p id="logo-main">P</p>
+                <p id="logo-text">Web Developer</p>
+            </div>
+            <div id="buttons">
+                <button class="menu-button">HOME</button>
+                <button class="menu-button">WORK</button>
+                <button class="menu-button">ABOUT</button>
+                <button class="menu-button">CONTACT</button>
+                <button class="menu-button">OTHER</button>
+            </div>
+            <footer>
+                <img class="social-media github" alt="GitHub">
+                <img class="social-media linkedin" alt="LinkedIn">
+            </footer>
+        </nav>
+        <header>
+            <div id="header-text-container">
+                    <div id="page-title">
+                        <div class="border-shadow top"></div>    
+                        <div id="title-section">
+                            <div class="title-row">
+                                <span class="main-letter">W</span><span class="letter">e</span><span class="letter">l</span><span class="letter">c</span><span class="letter">o</span><span class="letter">m</span><span class="letter">e</span><span class="letter">!</span><br>
+                            </div>
+                            <div class="title-row">
+                                <span class="letter">I</span><span class="letter">'</span><span class="letter">m</span><span class="letter">&nbsp;</span><span class="main-letter">P</span><span class="letter">a</span><span class="letter">b</span><span class="letter">l</span><span class="letter">o</span><span class="letter">,</span><br>
+                            </div>
+                            <div class="title-row">
+                                <span class="main-letter">W</span><span class="letter">e</span><span class="letter">b</span><span class="letter">&nbsp;</span><span class="main-letter">D</span><span class="letter">e</span><span class="letter">v</span><span class="letter">e</span><span class="letter">l</span><span class="letter">o</span><span class="letter">p</span><span class="letter">e</span><span class="letter">r&nbsp;</span>
+                            </div>
                         </div>
-                        <div class="title-row">
-                            <span class="letter">I</span><span class="letter">'</span><span class="letter">m</span><span class="letter">&nbsp;</span><span class="main-letter">P</span><span class="letter">a</span><span class="letter">b</span><span class="letter">l</span><span class="letter">o</span><span class="letter">,</span><br>
-                        </div>
-                        <div class="title-row">
-                            <span class="main-letter">W</span><span class="letter">e</span><span class="letter">b</span><span class="letter">&nbsp;</span><span class="main-letter">D</span><span class="letter">e</span><span class="letter">v</span><span class="letter">e</span><span class="letter">l</span><span class="letter">o</span><span class="letter">p</span><span class="letter">e</span><span class="letter">r&nbsp;</span>
-                        </div>
+                        <p id="page-subtitle">Front End Developer</p>
+                        <div class="border-shadow bottom"></div>    
                     </div>
-                    <p id="page-subtitle">Front End Developer</p>
-                </div>
-                <div class="border-shadow bottom"></div>    
-            </div>        
-        <canvas id="canvas-element"></canvas>
-    </header>
+                </div>        
+            <canvas id="canvas-element"></canvas>
+        </header>
+    </main>
 </body>
 </html>

@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Monoton');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap');
 :root{
     --main: #4FE1C4;
     --main-dark: #08A888;
-    --bg-color: black;
-    --contrast: orange;
+    --bg-color: #171717;
+    --contrast: #ED944D;
     --font: "Gill Sans", sans-serif;
 }
 body, html{
@@ -13,27 +14,76 @@ body, html{
     height: 100%;
     overflow-x: hidden;
 }
-/*----------------------------- BUTTON SECTION --------------------*/
+main{
+    display: grid;
+    grid-template-columns: 12.5% 87.5%;
+    height: 100%;
+    width: 100%;
+}
 nav{
+    display: grid;
+    grid-template-rows: 25% 50% 25%;
+    background-color: black;
+}
+/*----------------------------- LOGO SECTION --------------------*/
+#logo{
+    display: grid;
+    grid-template-rows: auto auto;    
+    width: 100%;
+    height: 100%;
+}
+#logo-main{
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     text-align: center;
-    background-color: var(--bg-color);
+    justify-self: center;
+    /*Font*/
+    font-size: 6rem;
+    margin: auto;
+    color: transparent;
+    -webkit-text-stroke: 3px white;
+    text-shadow: 4.5px 4.5px var(--main);
+    font-family: 'Raleway', sans-serif;
+}
+#logo-main:hover{
+    text-shadow: 4.5px 4.5px var(--contrast);
+}     
+#logo-text{
+    display: flex;
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+    margin-top: -10%;
+    /*Font*/
+    font-family: fantasy;
+    font-size: 1.25rem;
+    font-weight: 100;   
+    color: white;
+}
+/*-----------------------------------------------------------------*/
+/*----------------------------- BUTTON SECTION --------------------*/
+
+#buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    text-align: center;
 }
 .menu-button{
-    width: 20%;
-    background-color: var(--main);
-    color: var(--bg-color);
+    width: 98%;
+    height: max-content;
+    padding: 7.5% 5%;
     font-family: var(--font);
     font-size: 1.5vmax;
-    font-weight: 500;
-    border: var(--bg-color) solid 3px;
-    border-radius: 5px;    
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: inset 6px 1px 0px var(--main-dark);
+    background: linear-gradient(135deg, var(--bg-color) 95%, transparent 5%);
+    color: white;
 }
 .menu-button:hover{
-    background-color: var(--contrast);
-    transform: scale(1.1)
+    background: linear-gradient(135deg, white 95%, transparent 5%);
+    box-shadow: inset 6px 1px 0px var(--contrast);
+    color: var(--contrast);
 }
 
 
@@ -41,7 +91,7 @@ nav{
 /*----------------------------- HEADER SECTION --------------------*/
 header{
     width: 100%;
-    height: fit-content;
+    height: 100%;
     background-color: var(--bg-color);
     position: relative;
     display: grid;
@@ -52,23 +102,26 @@ header{
     grid-column-start: 1;
 }
 #header-text-container{
-    width: fit-content;
     position: relative;
-    margin: 5%;
+    margin: 7.5%;
 }
 /*Main title element*/
 #page-title{
     /*Positioning and others*/
-    padding: 4%;
     user-select: none;
     border-top: 5px solid currentColor;
     border-bottom: 5px solid currentColor;
-    border-radius: 2.5px;    
+    border-radius: 2.5px;
+    width: fit-content;    
+    position: relative;
     /*Font*/
     color: white;
-    font-size: 4vmax;
+    font-size: 4.25vmax;
     font-family: var(--font);
     font-weight: 800;    
+}
+#title-section{
+    padding: 4%;
 }
 .border-shadow{
     height: 5px;
@@ -78,18 +131,18 @@ header{
     border-radius: 10px;
 }
 .top{
-    position: absolute;
-    margin-top: calc(5px + 1.5%);
+    margin-top: 5%;
 }
 .bottom{
-    margin-top: 1.5%;
+    position: absolute;
+    margin-top: calc(5% + 5px);
 }
 /*Main title element: sentence row*/
 .title-row{
     display: flex;
     flex-direction: row;
-    height: 6vmax;
-    width: 35vmax;
+    height: 5vmax;
+    width: 40vmax;
 }
 /*Main title element: capital letters*/
 .main-letter{
@@ -108,7 +161,7 @@ header{
 	.main-letter:hover {  
 		color: transparent;
 		background: linear-gradient(-45deg, var(--contrast) 50%, red 0);
-        font-size: 4.25vmax;
+        font-size: 4.4vmax;
 		-webkit-background-clip: text;
         background-clip: text;
 	}
@@ -116,7 +169,7 @@ header{
 
 .letter:hover{
     color: var(--contrast);
-    font-size: 4.25vmax;
+    font-size: 4.4vmax;
 }
 
 /*Subtitle element*/
@@ -126,6 +179,7 @@ header{
     font-family: "Gill Sans", sans-serif;
     font-weight: 200;
     margin: 0;
+    padding: 0% 4% 4% 4%;
     position: relative;
 }
 
@@ -141,7 +195,36 @@ canvas{
 }
 
 /*---------------------------------------------------------------------*/
-
+/*------------------------ FOOTER SECTION -----------------------------*/
+/* Icons source: https://icons8.com */
+footer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.social-media{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35%;
+    height: 35%;
+    cursor: pointer;
+}
+.linkedin{
+    content: url('pictures/linkedin.svg');
+}
+.linkedin:hover{
+    content: url('pictures/linkedin-hover.svg');
+}
+.github{
+    content: url('pictures/github.svg');
+}
+.github:hover{
+    content: url('pictures/github-hover.svg');
+}
+/*---------------------------------------------------------------------*/
 
 
 
