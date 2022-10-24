@@ -1,5 +1,7 @@
-@import url('https://fonts.googleapis.com/css?family=Monoton');
-@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Monoton'); /*Font: Capital letters in main text*/
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap'); /*Font: logo*/
+@import url('http://fonts.cdnfonts.com/css/chalk'); /*Font: code "image"*/
+
 :root{
     --main: #4FE1C4;
     --main-dark: #08A888;
@@ -13,6 +15,7 @@ body, html{
     width: 100%;
     height: 100%;
     overflow-x: hidden;
+    user-select: none;
 }
 main{
     display: grid;
@@ -27,35 +30,44 @@ nav{
 }
 /*----------------------------- LOGO SECTION --------------------*/
 #logo{
-    display: grid;
-    grid-template-rows: auto auto;    
     width: 100%;
     height: 100%;
 }
-#logo-main{
+#logo-container{
     display: flex;
-    text-align: center;
-    justify-self: center;
-    /*Font*/
-    font-size: 6rem;
-    margin: auto;
-    color: transparent;
-    -webkit-text-stroke: 3px white;
-    text-shadow: 4.5px 4.5px var(--main);
-    font-family: 'Raleway', sans-serif;
+    flex-direction: column;
+    text-align: right;
+    justify-content: center;
+    width: 90%;
+    height: 90%;
 }
-#logo-main:hover{
+#logo-main-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+#logo-main-container p{
+    margin: 0;
+    width: fit-content;
+    /*Font*/
+    font-size: 4vmax;
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    text-shadow: 4.5px 4.5px var(--main-dark);  
+    -webkit-text-stroke: 1px var(--bg-color); 
+}
+#logo-main{
+    font-size: 6vmax;
+}
+#logo-main-container p:hover{
     text-shadow: 4.5px 4.5px var(--contrast);
+    transform: rotate(3deg);
 }     
 #logo-text{
-    display: flex;
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-    margin-top: -10%;
-    /*Font*/
+    margin: 0;
     font-family: fantasy;
-    font-size: 1.25rem;
+    font-size: 1.25vmax;
     font-weight: 100;   
     color: white;
 }
@@ -97,18 +109,43 @@ header{
     display: grid;
     grid-template-columns: 1fr;
 }
-#header-text-container, canvas{
+#header-content, canvas{
     grid-row-start: 1;
     grid-column-start: 1;
+}
+#header-content{
+    display: grid;
+    grid-template-columns: 65% 35%;
 }
 #header-text-container{
     position: relative;
     margin: 7.5%;
 }
+#right-side{
+    display: grid;
+    grid-template-rows: 70% 30%;
+}
+
+/*-------------------------CODE IMG SECTION----------------------------*/
+#code-img-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 90%;
+    transform: rotate(15grad);
+}
+#code-img{
+    font-family: 'Chalk', sans-serif;
+    font-size: 1.5vmax;
+    color: white;
+    opacity: 0.7;
+}
+/*---------------------------------------------------------------------*/
+/*-------------------------TITLES SECTION -----------------------------*/
 /*Main title element*/
 #page-title{
     /*Positioning and others*/
-    user-select: none;
     border-top: 5px solid currentColor;
     border-bottom: 5px solid currentColor;
     border-radius: 2.5px;
@@ -164,12 +201,14 @@ header{
         font-size: 4.4vmax;
 		-webkit-background-clip: text;
         background-clip: text;
+        transform: rotate(5deg);
 	}
 }
 
 .letter:hover{
     color: var(--contrast);
     font-size: 4.4vmax;
+    transform: rotate(5deg);
 }
 
 /*Subtitle element*/
@@ -190,7 +229,7 @@ canvas{
     position: absolute;
     z-index: 1;
 }
-.letter, .main-letter, #page-subtitle{
+.letter, .main-letter, #page-subtitle, #logo-main-container p{
     z-index: 2;
 }
 
@@ -226,12 +265,33 @@ footer{
 }
 /*---------------------------------------------------------------------*/
 
-
-
-
-
-
-
+/*---------------------------------------------------------------------*/
+#design-container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+#square{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    width: 70px;
+    height: 70px;
+    box-shadow:  6px -6px black, 
+                 12px -12px 10px var(--main),
+                 -6px 6px black, 
+                 -12px 12px 10px var(--main);
+    border: 3.5px white solid;
+    border-radius: 2.5px;
+    background-color: transparent;    
+}
+#square:hover{
+    box-shadow:  6px -6px black, 
+                 12px -12px 10px var(--contrast),
+                 -6px 6px black, 
+                 -12px 12px 10px var(--contrast);
+}
 
 
 

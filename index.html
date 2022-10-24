@@ -12,9 +12,8 @@
 <body>
     <main>
         <nav>
-            <div id="logo">
-                <p id="logo-main">P</p>
-                <p id="logo-text">Web Developer</p>
+            <div id="design-container">
+                <div id="square"></div>
             </div>
             <div id="buttons">
                 <button class="menu-button">HOME</button>
@@ -29,24 +28,49 @@
             </footer>
         </nav>
         <header>
-            <div id="header-text-container">
-                    <div id="page-title">
-                        <div class="border-shadow top"></div>    
-                        <div id="title-section">
-                            <div class="title-row">
-                                <span class="main-letter">W</span><span class="letter">e</span><span class="letter">l</span><span class="letter">c</span><span class="letter">o</span><span class="letter">m</span><span class="letter">e</span><span class="letter">!</span><br>
+            <div id="header-content">
+                <div id="header-text-container">
+                        <div id="page-title">
+                            <div class="border-shadow top"></div>    
+                            <div id="title-section">
+                                <div class="title-row">
+                                    <span class="main-letter">W</span><span class="letter">e</span><span class="letter">l</span><span class="letter">c</span><span class="letter">o</span><span class="letter">m</span><span class="letter">e</span><span class="letter">!</span><br>
+                                </div>
+                                <div class="title-row">
+                                    <span class="letter">I</span><span class="letter">'</span><span class="letter">m</span><span class="letter">&nbsp;</span><span class="main-letter">P</span><span class="letter">a</span><span class="letter">b</span><span class="letter">l</span><span class="letter">o</span><span class="letter">,</span><br>
+                                </div>
+                                <div class="title-row">
+                                    <span class="main-letter">W</span><span class="letter">e</span><span class="letter">b</span><span class="letter">&nbsp;</span><span class="main-letter">D</span><span class="letter">e</span><span class="letter">v</span><span class="letter">e</span><span class="letter">l</span><span class="letter">o</span><span class="letter">p</span><span class="letter">e</span><span class="letter">r&nbsp;</span>
+                                </div>
                             </div>
-                            <div class="title-row">
-                                <span class="letter">I</span><span class="letter">'</span><span class="letter">m</span><span class="letter">&nbsp;</span><span class="main-letter">P</span><span class="letter">a</span><span class="letter">b</span><span class="letter">l</span><span class="letter">o</span><span class="letter">,</span><br>
-                            </div>
-                            <div class="title-row">
-                                <span class="main-letter">W</span><span class="letter">e</span><span class="letter">b</span><span class="letter">&nbsp;</span><span class="main-letter">D</span><span class="letter">e</span><span class="letter">v</span><span class="letter">e</span><span class="letter">l</span><span class="letter">o</span><span class="letter">p</span><span class="letter">e</span><span class="letter">r&nbsp;</span>
-                            </div>
+                            <p id="page-subtitle">Front End Developer</p>
+                            <div class="border-shadow bottom"></div>    
                         </div>
-                        <p id="page-subtitle">Front End Developer</p>
-                        <div class="border-shadow bottom"></div>    
+                </div>     
+                <div id="right-side">
+                    <div id="code-img-container">
+                        <span id="code-img">
+                            &#60;div&#62; <br>
+                            &emsp;&#60;h1&#62;Welcome here!&#60;&#47;h1&#62; <br>
+                            &emsp;&#60;script&#62; <br>
+                            &emsp;&emsp;if (need_help === true) { <br>
+                            &emsp;&emsp;&emsp;contact.Pablo(); <br>
+                            &emsp;&emsp;}<br>
+                            &emsp;&#60;&#47;script&#62; <br>
+                            &emsp;&#60;p&#62;Thanks for visiting!&#60;&#47;p&#62; <br>
+                            &#60;&#47;div&#62;
+                        </span>
                     </div>
-                </div>        
+                    <div id="logo">
+                        <div id="logo-container">
+                            <div id="logo-main-container">
+                                <p>&#60;<span id="logo-main">P</span>&#62;</p>
+                            </div>
+                            <p id="logo-text">Web Developer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <canvas id="canvas-element"></canvas>
         </header>
     </main>
