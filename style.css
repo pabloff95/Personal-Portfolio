@@ -16,10 +16,12 @@ body, html{
     height: 100%;
     overflow-x: hidden;
     user-select: none;
+    background-color: var(--bg-color);
+    min-width: 300px;
 }
 main{
     display: grid;
-    grid-template-columns: 12.5% 87.5%;
+    grid-template-columns: max(12.5%, 100px) auto;
     height: 100%;
     width: 100%;
 }
@@ -45,7 +47,6 @@ nav{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(45deg);
-    width: 40%;
     box-shadow:  6px -6px black, 
                  12px -12px 10px var(--main),
                  -6px 6px black, 
@@ -90,7 +91,7 @@ nav{
 .menu-button{
     width: 98%;
     height: max-content;
-    padding: 7.5% 5%;
+    padding: 8.5% 5%;
     font-family: var(--font);
     font-size: 1.5vmax;
     font-weight: 800;
@@ -129,8 +130,7 @@ footer{
     cursor: pointer;
 }
 .linkedin{
-    content: url('pictures/linkedin.svg');
-    transition: .5s ease-out;
+    content: url('pictures/linkedin.svg');    
 }
 .linkedin:hover{
     content: url('pictures/linkedin-hover.svg');
@@ -151,24 +151,25 @@ header{
     height: 100%;
     background-color: var(--bg-color);
     position: relative;
-    display: grid;
-    grid-template-columns: 1fr;
-}
-#header-content, canvas{
-    grid-row-start: 1;
-    grid-column-start: 1;
 }
 #header-content{
-    display: grid;
-    grid-template-columns: 65% 35%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+    align-content: baseline;
 }
 #header-text-container{
     position: relative;
-    margin: 7.5%;
+    margin: 7.5% 0%;
+    flex-grow: 1;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
 }
 #right-side{
-    display: grid;
-    grid-template-rows: 70% 30%;
+    flex-grow: 1;
+    min-height: max(30%, 300px);
 }
 /*-------------------------TITLES SECTION -----------------------------*/
 /*Main title element*/
@@ -181,12 +182,12 @@ header{
     position: relative;
     /*Font*/
     color: white;
-    font-size: 4.25vmax;
+    font-size: calc(1rem + 3.25vw);
     font-family: var(--font);
     font-weight: 800;    
 }
 #title-section{
-    padding: 4%;
+    padding: 0 4%;
 }
 .border-shadow{
     height: 5px;
@@ -206,8 +207,7 @@ header{
 .title-row{
     display: flex;
     flex-direction: row;
-    height: 5vmax;
-    width: 40vmax;
+    
 }
 /*Main title element: capital letters*/
 .main-letter{
@@ -230,28 +230,23 @@ header{
         background-clip: text;
         animation-name: main-letterHover;
         animation-duration: 500ms;
-        
-        
 	}
 }
 /*Animation for main-letter hover*/
 @keyframes main-letterHover {
     0% {
-        font-size: 4.25vmax;
         background: linear-gradient(-45deg, var(--main) 50%, var(--main-dark) 0);
         -webkit-background-clip: text;
         background-clip: text;        
         transform: rotate(0deg);
     }
     50%{
-        font-size: 4.4vmax;
         background: linear-gradient(-45deg, var(--contrast) 50%, red 0);
         -webkit-background-clip: text;
         background-clip: text;        
-        transform: rotate(5deg);
+        transform: rotate(8deg);
     }
     100% {
-        font-size: 4.25vmax;
         background: linear-gradient(-45deg, var(--contrast) 50%, red 0);
         -webkit-background-clip: text;
         background-clip: text;
@@ -269,17 +264,14 @@ header{
 @keyframes letterHover {
     0% {
         color: white;
-        font-size: 4.25vmax;
         transform: rotate(0deg);
     }
     50%{
         color: var(--contrast);
-        font-size: 4.4vmax;
-        transform: rotate(5deg);
+        transform: rotate(8deg);
     }
     100% {
         color: var(--contrast);
-        font-size: 4.25vmax;
         transform: rotate(0deg);
     }
 }
@@ -288,7 +280,7 @@ header{
 /*Subtitle element*/
 #page-subtitle{
     color: white;
-    font-size: 1.5vmax;
+    font-size: calc(0.75rem + 0.75vmax);
     font-family: "Gill Sans", sans-serif;
     font-weight: 200;
     margin: 0;
@@ -313,29 +305,34 @@ canvas{
     position: relative;
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    height: 90%;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
     transform: rotate(15grad);
 }
 #code-img{
     font-family: 'Chalk', sans-serif;
-    font-size: 1.5vmax;
+    font-size: calc(0.5rem + 1vmax);
     color: white;
-    opacity: 0.7;
+    opacity: 0.7;   
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 /*---------------------------------------------------------------------*/
 /*----------------------------- LOGO SECTION --------------------*/
 #logo{
     width: 100%;
-    height: 100%;
+    position: absolute;
+    bottom: 3%;
+    right: 3%;
 }
 #logo-container{
     display: flex;
     flex-direction: column;
     text-align: right;
     justify-content: center;
-    width: 90%;
-    height: 90%;
 }
 #logo-main-container{
     width: 100%;
@@ -393,8 +390,79 @@ canvas{
     color: white;
 }
 /*-----------------------------------------------------------------*/
+/*--------------------- RESPONSIVE DESIGN SETTING-------------------*/
 
+/*Better visualization of main 2 elements: title + codeimg
+    used for smaller sizes, but not yet phone size */
+@media all and (max-width: 950px), (orientation: portrait) {
+    html, body{
+        overflow: hidden;
+    }
+    main{
+        grid-template-columns: max(20%, 150px) auto;     
+    }
+    #header-content { 
+       flex-direction: column;
+       flex-wrap: unset;
+       height: max-content;
+       position: relative;
+       top: 50%;
+       transform: translateY(-50%);
+    }
+    #right-side{
+        margin-top: 15%;
+    }    
+    .menu-button{
+        padding: 10% 5%;
+        font-size: 2vmax;
+    }
+ }
 
+/*Mediun + small devices*/
+@media all and (max-width: 768px){
+    html, body{
+        overflow-y: unset;
+    }
+    main{
+        display: unset;  
+    }
+    nav{
+        height: fit-content;
+        grid-template-rows: 100%;
+        grid-template-columns: 15% 70% 15%;
+        padding: 2% 0;
+    }
+    #header-content {       
+        top: unset;
+        transform: unset;
+     }
+    #buttons{
+        flex-direction: row;
+        justify-content: space-evenly;
+        text-align: center;
+    }
+    .menu-button{
+        width: 20%;
+        height: fit-content;
+        padding: 3.5% 0;
+        font-size: 2.25vw;/*1.5vmax;*/
+        margin: auto;
+        box-shadow: inset 0px 3px 0px var(--main-dark);
+    }
+    .menu-button:hover{
+        box-shadow: inset 0px 3px 0px var(--contrast);
+    }
+    .social-media{
+        width: 70%;
+        height: 70%;
+    }
+    #header-text-container{
+        margin: 10% 0%
+    }
+    #right-side{
+        margin-top: 5%;
+    }
+}
 
 
 
