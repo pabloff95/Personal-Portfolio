@@ -18,7 +18,10 @@ window.addEventListener("load", function(){
         }        
     });
 
-
+    // Button click window relocation
+    document.getElementById("work-button")?.addEventListener("click", () => {
+        window.location.href = "/projects/work.html";
+    });
 
     // Add URL to logos of social media
     document.querySelector(".github").addEventListener("click", function(){

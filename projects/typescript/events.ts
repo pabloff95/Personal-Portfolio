@@ -3,15 +3,13 @@ window.addEventListener("load", function() {
     const CONTENT:HTMLElement|null = document.querySelector("main");
     
     // Create the project objects
-    let project1:Project = new Project("Project nr. 1", "This is just a test!", "1.png", "description", "link");    
-    let project2:Project = new Project("Project nr. 2", "This is just a test!", "2.png", "description", "link");    
-    let project3:Project = new Project("Project nr. 3", "This is just a test!", "3.png", "description", "link");    
-    let project4:Project = new Project("Project nr. 4", "This is just a test!", "4.png", "description", "link");    
-    let project5:Project = new Project("Project nr. 5", "This is just a test!", "1.png", "description", "link");    
-    let project6:Project = new Project("Project nr. 6", "This is just a test!", "2.png", "description", "link");    
-    let project7:Project = new Project("Project nr. 7", "This is just a test!", "3.png", "description", "link");    
-    let project8:Project = new Project("Project nr. 8", "This is just a test!", "4.png", "description", "link");    
-    let projects:Project[] = [project1, project2, project3, project4, project5, project6, project7, project8];
+    let project1:Project = new Project("The GuessGame", "Mastermind boardgame online version", "guessgame.png", "description", "link");    
+    let project2:Project = new Project("Finance Manager", "App to keep track of your finances", "finance-manager.png", "description", "link");    
+    let project3:Project = new Project("Weather App", "App to get the weather forecast of any town", "weather-app.png", "description", "link");    
+    let project4:Project = new Project("Snake Game", "Traditional snake mobilephone game", "snake-game.png", "description", "link");    
+    let project5:Project = new Project("Research Study", "Data analysis study on Plant Ecology", "research-study.png", "description", "link");    
+    
+    let projects:Project[] = [project1, project2, project3, project4, project5];
 
     // Display projects as HTML elements
     if (CONTENT != null) {
@@ -24,12 +22,15 @@ window.addEventListener("load", function() {
         // - Create hover (CSS) like events on projects pictures to display the project title / subtitle on mouse out / over respectively
         // - On click: display project detailed information. If same miniature is clicked twice: first shows the project, second hides it again
     const MINIATURES:HTMLCollection = document.getElementsByClassName("miniature");
+    const IMGS:HTMLCollection = document.getElementsByClassName("miniature-img");
     for (let i:number = 0; i < MINIATURES.length; i++) {        
         MINIATURES[i].addEventListener("mouseout", function(this:HTMLElement){
             this.innerHTML = projects[i].getMiniatureWithTitle();
         });
         MINIATURES[i].addEventListener("mouseover", function(this:HTMLElement){
             this.innerHTML = projects[i].getMiniatureWithSummary();
+            // Change img background from black-white to colour
+            (<HTMLElement>IMGS[i]).style.filter = "grayscale(0%)";            
         });
         MINIATURES[i].addEventListener("click", function(this:HTMLElement){             
             let projectElements:NodeList = document.querySelectorAll(".project");
@@ -57,6 +58,11 @@ window.addEventListener("load", function() {
             }
         });
     }
+
+    // Side-menu buttons click events
+    document.getElementById("home-button")?.addEventListener("click", () => {
+        window.location.href = "../index.html";
+    });
 });
 
 // Project class for each programming project to be shown
@@ -106,13 +112,17 @@ class Project {
     // Create HTML element with the information to display (title content (no event) - subtitle content ("hover" event))
     getMiniatureWithTitle = ():string => {
         return  `         
-            <span class="miniature-title">${this.title}</span>
+            <div class="miniature-title-container">
+                <span class="miniature-title">${this.title}</span>
+            </div>
             <img src="pictures/${this.url}" class="miniature-img">
         `;        
     }
     getMiniatureWithSummary = ():string => {
         return  `         
-            <span class="miniature-summary">${this.summary}</span>
+            <div class="miniature-summary-container">
+                <span class="miniature-summary">${this.summary}</span>
+            </div>
             <input type="hidden" id="miniature-identifier" value="${this.title}">
             <img src="pictures/${this.url}" class="miniature-img">
         `;        
