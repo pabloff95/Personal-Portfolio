@@ -18,9 +18,15 @@ window.addEventListener("load", function(){
         }        
     });
 
-    // Button click window relocation
-    document.getElementById("work-button")?.addEventListener("click", () => {
-        window.location.href = "/projects/work.html";
+    // Button: click to relocate window 
+    document.getElementById("work-button").addEventListener("click", () => {
+        window.location.href = "/work/work.html";
+    });
+    document.getElementById("about-button").addEventListener("click", () => {
+        window.location.href = "/about/about.html";
+    });
+    document.getElementById("contact-button").addEventListener("click", () => {
+        window.location.href = "/contact/contact.html";
     });
 
     // Add URL to logos of social media

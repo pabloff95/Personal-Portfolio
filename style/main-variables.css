@@ -1,0 +1,15 @@
+/*
+    FONTS AND COLOURS SHARED BY ALL PAGES
+*/
+
+@import url('https://fonts.googleapis.com/css?family=Monoton'); /*Font: Capital letters in main text*/
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap'); /*Font: logo*/
+@import url('http://fonts.cdnfonts.com/css/chalk'); /*Font: code "image"*/
+
+:root{
+    --main: #4FE1C4;
+    --main-dark: #08A888;
+    --bg-color: #171717;
+    --contrast: #ED944D;
+    --font: "Gill Sans", sans-serif;
+}
