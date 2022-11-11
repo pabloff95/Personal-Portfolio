@@ -5,9 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pablo Web Development</title>    
-    <script src="scripts/events.js"></script>
+    <script src="scripts/events.js"></script>    
     <link rel="stylesheet" href="../style/main-variables.css">
     <link rel="stylesheet" href="../style/main-layout.css">
+    <link rel="stylesheet" href="contact.css">
+    <!-- ?php 
+        // Send email 
+        function sendMail($name, $mail, $text){
+            // Parameters
+            $to = "pablo.fernandezfernandez@outlook.com";
+            $subject = "Contact from pablo-webdevelopment";
+            $message = "Hello ,\r\n \r\n".        
+                "NEW MESSAGE FROM: " . $name . "\r\n \r\n" .
+                "CONTACT: " . $mail . "\r\n \r\n" .
+                "MESSAGE:" . "\r\n \r\n" . $text . "\r\n \r\n";
+            $header = 'From: service@pablo-webdevelopment.com';
+            // Send email
+            mail($to, $subject, $message, $header);
+        }        
+                     
+        if (isset($_POST['contactForm'])){
+            sendMail($_POST['name'],$_POST['email'],$_POST['message']);                               
+        }                    
+    ? -->
 </head>
 <body>
     <nav>
@@ -33,9 +53,34 @@
     
     <div id="page-content">
         <header>
-            <span id="main-title">&#60;CONTACT/&#62;</span><br>            
+            <div id="main-title">
+                <span class="main-title-element">&#91;</span><span>&#32;CONTACT&#32;</span><span class="main-title-element">&#93;</span><br>          
+            </div><br>
+            <span class="subtitle-text">You can find me at my <a href="https://www.linkedin.com/in/pablo-fdezfdez/">LinkedIn</a> 
+                or <a href="https://github.com/pabloff95">GitHub</a> profiles.</span><br>
+            <span class="subtitle-text">But If you prefere contact me directly, write a message bellow.</span>
         </header>
-        <main></main>
+        <main>
+            <form action="contact.html">
+            <!--form action="contact.php" method="POST"-->
+                <div class="form-element">                    
+                    <input type="text" class="text-field input" name="name">                                        
+                    <label class="label-element">Name</label>
+                </div>
+                <br>
+                <div class="form-element">                    
+                    <input type="text" class="text-field input" name="email">                    
+                    <label class="label-element">Email</label>
+                </div>
+                <br>
+                <div class="form-element">
+                    <textarea class="textarea-field input" name="message">Write your message here ...</textarea>                                                 
+                </div>
+                <div class="form-element">
+                    <input type="submit" value="SEND" name="contactForm" id="submit-button">
+                </div>
+            </form>
+        </main>
     </div>    
 
 </body>

@@ -3,8 +3,10 @@
 */
 
 @import url('https://fonts.googleapis.com/css?family=Monoton'); /*Font: Capital letters in main text*/
+@import url('https://fonts.googleapis.com/css?family=Impact'); /*Font: logo, and main texts using impact font family*/
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@900&display=swap'); /*Font: logo*/
 @import url('http://fonts.cdnfonts.com/css/chalk'); /*Font: code "image"*/
+
 
 :root{
     --main: #4FE1C4;
@@ -12,4 +14,5 @@
     --bg-color: #171717;
     --contrast: #ED944D;
     --font: "Gill Sans", sans-serif;
+    --logo-text-font: 'Impact', 'Raleway', sans-serif;
 }

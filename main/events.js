@@ -8,14 +8,12 @@ window.addEventListener("load", function(){
         square.style.height = "30%";
         square.style.width = getComputedStyle(square).height;
     }
-    this.window.addEventListener("resize", function(){
+    
+    this.window.addEventListener("resize", function(){        
         if(window.innerWidth >= 768) { 
             square.style.width = "40%";
-            square.style.height = getComputedStyle(square).width;
-        } else {
-            square.style.height = "30%";
-            square.style.width = getComputedStyle(square).height;
-        }        
+            square.style.height = getComputedStyle(square).width;            
+        } 
     });
 
     // Button: click to relocate window 

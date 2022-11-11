@@ -18,14 +18,14 @@ window.addEventListener("load", function() {
         "The study and its results can be found <a  href='https://doi.org/10.1111/plb.13418'>here</a>.";
 
     // Create objects
-    let project1:Project = new Project("The GuessGame", "An online adaptation of the boardgame \"Mastermind\"", "guessgame.png", PROJECT1_DESCRIPTION, "guess-game.online");    
-    let project2:Project = new Project("Finance Manager", "A web-application to keep track of all your finances", "finance-manager.png", PROJECT2_DESCRIPTION, null);    
-    let project3:Project = new Project("Weather App", "A wep-application to consult the weather forecast of any town", "weather-app.png", PROJECT3_DESCRIPTION, null);    
-    let project4:Project = new Project("Snake Game", "An adaptation of the traditional snake mobilephone game", "snake-game.png", PROJECT4_DESCRIPTION, null);    
-    let project5:Project = new Project("Research Study", "Data analysis study on Plant Ecology", "research-study.png", PROJECT5_DESCRIPTION, "doi.org/10.6084/m9.figshare.c.5757800");    
+    let project1:Project = new Project("The GuessGame", "An online adaptation of the boardgame \"Mastermind\"", "guessgame.PNG", PROJECT1_DESCRIPTION, "guess-game.online");    
+    let project2:Project = new Project("Finance Manager", "A web-application to keep track of all your finances", "finance-manager.PNG", PROJECT2_DESCRIPTION, null);    
+    let project3:Project = new Project("Weather App", "A wep-application to consult the weather forecast of any town", "weather-app.PNG", PROJECT3_DESCRIPTION, null);    
+    let project4:Project = new Project("Snake Game", "An adaptation of the traditional snake mobilephone game", "snake-game.PNG", PROJECT4_DESCRIPTION, null);    
+    let project5:Project = new Project("Research Study", "Data analysis study on Plant Ecology", "research-study.PNG", PROJECT5_DESCRIPTION, "doi.org/10.6084/m9.figshare.c.5757800");    
     // Add pictures set    
     project1.addPictureURL(["guessgame-1.PNG", "guessgame-2.PNG", "guessgame-3.PNG", "guessgame-4.PNG"]);
-    project2.addPictureURL(["finance-manager-1.png", "finance-manager-2.png", "finance-manager-3.png", "finance-manager-4.png"]);
+    project2.addPictureURL(["finance-manager-1.PNG", "finance-manager-2.PNG", "finance-manager-3.PNG", "finance-manager-4.PNG"]);
     project3.addPictureURL(["weather-app-1.PNG", "weather-app-2.PNG"]);
     project4.addPictureURL(["snake-game-1.PNG", "snake-game-2.PNG"]);
     project5.addPictureURL(["research-study-1.PNG", "research-study-2.PNG"]);
@@ -151,7 +151,7 @@ window.addEventListener("load", function() {
 
     // SIDE-MENU BUTTONS EVENT CLICKS
     document.getElementById("home-button")?.addEventListener("click", () => {
-        window.location.href = "../index.html";
+        window.location.href = "/";
     });
     document.getElementById("about-button")?.addEventListener("click", () => {
         window.location.href = "../about/about.html";

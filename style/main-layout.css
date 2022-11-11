@@ -66,7 +66,7 @@ nav{
     font-family: 'Raleway', sans-serif;
     color: white;
     text-shadow: 4.5px 4.5px var(--main-dark);  
-    -webkit-text-stroke: 1px var(--bg-color); 
+    -webkit-text-stroke: 1px var(--bg-color);    
 }
 #logo-main{
     font-size: 6vmax;
@@ -102,7 +102,7 @@ nav{
 
 #logo-text{
     margin: 0;
-    font-family: fantasy;
+    font-family: var(--logo-text-font);
     font-size: 1.25vmax;
     font-weight: 100;   
     color: white;
@@ -126,6 +126,8 @@ nav{
     cursor: pointer;
     box-shadow: inset 6px 1px 0px var(--main-dark);
     color: white;
+    border: 0px;
+    margin:  0.5% 0;
     /*Prepare background color transition on mouse hover*/
     background: linear-gradient(135deg,  white 45%, transparent 5%) right,
                 linear-gradient(135deg, var(--bg-color) 45%, transparent 5%);
@@ -203,12 +205,12 @@ header{
 }
 #main-title{    
     position: relative;    
-    width: fit-content;
-    font-size: calc(0.5rem + 3vw);
-    font-family: var(--font);
-    font-weight: 800;  
-    text-shadow: 2px 2px var(--main-dark);  
-    -webkit-text-stroke: 1px var(--bg-color);   
+    width: 90%;
+    padding: 0 2.5%;     
+    font-size: calc(1.5rem + 3vmax);
+    font-family: var(--logo-text-font);
+    font-weight: lighter; 
+    -webkit-text-stroke: 1px 1px black;      
     /*Do not allow text selection*/
     -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -217,10 +219,10 @@ header{
     -ms-user-select: none; /* Internet Explorer/Edge */
     user-select: none;
 }
-#main-title:hover{
-    text-shadow: 2px 2px var(--contrast);      
+.main-title-element{
+    font-size: calc(1rem + 2vmax);
+    text-shadow: 4.5px 4.5px var(--main-dark);  
 }
-
 /*---------------------------------------------------------------------*/
 
 
@@ -251,6 +253,10 @@ header{
         padding: 10% 5%;
         font-size: 2vmax;
     }
+    #main-title{    
+        font-weight: normal;     
+        -webkit-text-stroke: 0.5px var(--bg-color);   
+    }
 }
 
 /*Small devices*/
@@ -258,11 +264,17 @@ header{
     body{
         display: block;  
     }
+    #page-content{
+        padding: 5% 0;
+    }
     nav{
         height: fit-content;
         grid-template-rows: 100%;
-        grid-template-columns: 15% 70% 15%;
+        grid-template-columns: 20% 80%;
         padding: 2% 0;
+    }
+    footer{
+        display: none;
     }
     #buttons{
         flex-direction: row;
@@ -273,8 +285,8 @@ header{
         width: 25%;
         height: fit-content;
         padding: 3.5% 0;
-        font-size: 2.25vw;
-        margin: auto;
+        font-size: calc(0.5rem + 1.25vmax);
+        margin:  auto 0.5%;
         box-shadow: inset 0px 3px 0px var(--main-dark);        
     }
     .menu-button:hover{
@@ -285,14 +297,15 @@ header{
         height: 70%;
     }
     #logo-main-container p {
-        font-size: 2vmax;
+        font-size: 5vmax;
     }
     #logo-main{
-        font-size: 3vmax;
+        font-size: 7vmax;
     }
     #logo-text{
-        font-size: 1vmax;
+        display: none;
     }
+    
 }
 
 

@@ -3,7 +3,6 @@ body, html{
     padding: 0;
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
     user-select: none;
     background-color: var(--bg-color);
     min-width: 450px;    
@@ -30,6 +29,9 @@ nav{
     position: relative;
     width: 100%;
     height: 100%;
+}
+#logo-2{
+    display: none;
 }
 #square{
     position: relative;
@@ -87,6 +89,8 @@ nav{
     cursor: pointer;
     box-shadow: inset 6px 1px 0px var(--main-dark);
     color: white;
+    border: 0px;
+    margin:  0.5% 0;
     /*Prepare background color transition on mouse hover*/
     background: linear-gradient(135deg,  white 45%, transparent 5%) right,
                 linear-gradient(135deg, var(--bg-color) 45%, transparent 5%);
@@ -158,6 +162,7 @@ header{
 }
 #right-side{
     flex-grow: 1;
+    overflow: hidden;
     min-height: max(30%, 300px);
 }
 /*-------------------------TITLES SECTION -----------------------------*/
@@ -373,7 +378,7 @@ canvas{
 
 #logo-text{
     margin: 0;
-    font-family: fantasy;
+    font-family: var(--logo-text-font);
     font-size: 1.25vmax;
     font-weight: 100;   
     color: white;
@@ -398,9 +403,7 @@ canvas{
 /*Better visualization of main 2 elements: title + codeimg
     used for smaller sizes, but not yet phone size */
 @media all and (max-width: 950px), (orientation: portrait) {
-    html, body{
-        overflow: hidden;
-    }
+
     main{
         grid-template-columns: max(20%, 150px) auto;     
     }
@@ -417,22 +420,28 @@ canvas{
     }    
     .menu-button{
         padding: 10% 5%;
-        font-size: 2vmax;
+        font-size: 2vmax;        
     }
  }
 
 /*Mediun + small devices*/
 @media all and (max-width: 768px){
-    html, body{
-        overflow-y: unset;
-    }
     main{
         display: unset;  
+    }
+    #design-container, footer{
+        display: none;
+    }
+    #logo-2{
+        display: block;
+    }
+    #logo{
+        display: none;
     }
     nav{
         height: fit-content;
         grid-template-rows: 100%;
-        grid-template-columns: 15% 70% 15%;
+        grid-template-columns: 20% 80%;
         padding: 2% 0;
     }
     #header-content {       
@@ -448,9 +457,9 @@ canvas{
         width: 25%;
         height: fit-content;
         padding: 3.5% 0;
-        font-size: 2.25vw;
-        margin: auto;
-        box-shadow: inset 0px 3px 0px var(--main-dark);
+        font-size: calc(0.5rem + 1.25vmax);
+        margin:  auto 0.5%;
+        box-shadow: inset 0px 3px 0px var(--main-dark);        
     }
     .menu-button:hover{
         box-shadow: inset 0px 3px 0px var(--contrast);
@@ -464,6 +473,38 @@ canvas{
     }
     #right-side{
         margin-top: 5%;
+    }
+
+    /*Logo on top menu button appear*/
+    #logo-2{
+        width: 100%;     
+        height: 100%;   
+        display: flex;        
+        text-align: right;
+        justify-content: center;
+    }
+    #logo-main-container-2{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    #logo-main-container-2 p{
+        margin: 0;        
+        /*Font*/
+        font-size: 5vmax;
+        font-family: 'Raleway', sans-serif;
+        color: white;
+        text-shadow: 4.5px 4.5px var(--main-dark);  
+        -webkit-text-stroke: 1px var(--bg-color); 
+    }
+    #logo-main-2{
+        font-size: 7vmax;
+    }
+    #logo-main-container-2 p:hover{
+        animation-name: logoAnimation;
+        animation-duration: 0.5s;
+        animation-timing-function: ease-in;
     }
 }
 
