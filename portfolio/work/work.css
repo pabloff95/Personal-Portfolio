@@ -1,0 +1,251 @@
+:root{
+    --miniatureMinDimensions: 250px;    
+}
+
+html, body{
+    min-width: calc(var(--miniatureMinDimensions)*2 + 100px);  
+}
+
+/*---------------------------------------------------------------------*/
+/*----------------------------- MAIN CONTENT -----------------------------*/
+/*---------------------------------------------------------------------*/
+#page-content{
+    z-index: -20;          
+}
+#text-content{
+    margin: 2% 0;
+    position: relative;    
+    font-size: calc(0.5rem + 1vmax);
+    font-family: var(--font);    
+}
+main{
+    position: relative;    
+    width: 100%;
+}
+#miniatures-section{
+    min-width: calc(var(--miniatureMinDimensions)*2 + 30px);
+    width: 75vw;        
+    margin: auto;    
+    /*Position and display*/
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;       
+}
+
+/*---------------------------------------------------------------------*/
+/*-----------------------PROJECT MINIATURE ELEMENTS -------------------*/
+.miniature{
+    position: relative;    
+    margin: 1% 0.5%; 
+    width: calc(var(--miniatureMinDimensions));    
+    height: calc(var(--miniatureMinDimensions)+ 1vh);    
+    border-radius: 20px;    
+    background-color: black;
+    box-shadow: 0px 5px 5px var(--main-dark);
+    transition: box-shadow 0.25s, color 0.25s;
+    padding: 2%;
+    cursor: pointer;   
+    color: white;  
+    /*Do not allow text selection*/
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
+}
+.miniature:hover{
+    box-shadow: 0px 5px 5px var(--contrast);
+    color: var(--contrast);
+}
+.miniature-title-container{
+    /*Position*/
+    position: relative;
+    max-height: 70%;        
+    margin: 2.5% 0;
+    /*Backgroun box*/                 
+    -webkit-box-stroke: 2px black;   
+}
+.miniature-title{        
+    font-size: 2rem;
+    font-weight: lighter;
+    font-family: var(--logo-text-font);    
+}
+.miniature-summary-container{    
+    position: relative;               
+    text-align: justify;
+    width: 100%;         
+    color: white;        
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;    
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;    
+}
+.miniature-summary{    
+    position: relative;    
+    font-size: calc(0.5rem + 0.65vmax);
+    font-family: var(--font);
+    font-weight: lighter;   
+}
+.miniature-img-container{
+    position: relative;
+    width: 100%;    
+    height: 55%;
+    overflow: hidden;
+    border-radius: 12px;    
+}
+.miniature-img{
+    width: 100%;
+    height: 100%;    
+    transform: scale(1);
+    transition: transform 0.25s, filter 0.25s, -webkit-filter 0.25s;    
+}
+.miniature:hover .miniature-img{
+    transform: scale(1.1);
+    filter: brightness(110%);
+    -webkit-filter: brightness(110%);
+}
+/*---------------------------------------------------------------------*/
+/*-----------------------PROJECT ELEMENTS -------------------*/
+/*---- PROJECT ELEMENTS ----*/
+.project{
+    position: relative;    
+    display: grid;
+    grid-template-columns: 60% 40%;
+    min-height: var(--miniatureMinDimensions);
+}
+.project-img-container{
+    position: relative;
+    height: 100%;
+    width: 100%;            
+}
+.project-img{    
+    position: absolute;
+    right: 0;
+    top: 5%;
+    height: 90%;
+    max-height: 350px;
+    width: 100%;        
+    z-index: 1;
+}
+.project-picture-button{
+    position: absolute;
+    top: 5%;
+    height: 90%;
+    max-height: 350px;
+    width: 10%;
+    z-index: 2;
+    padding: 0;
+    /*Style*/
+    background-color: transparent;
+    border: none;
+    font-family: var(--font);
+    font-size: calc(1rem + 2.5vmax);
+    font-weight: bolder;
+    color: white;
+    -webkit-text-stroke: 2px black;
+}
+.project-picture-button:hover{
+    background-color: rgba(255,255,255,0.4);
+    cursor: pointer;
+    color: var(--contrast);
+}
+#img-right-button{
+    right: 0;
+}
+.project-text-container{
+    position: relative;
+    color: white;
+    padding: 2.5%;  
+    text-align: justify;  
+}
+.project-title{
+    font-size: 1.7vmax;
+    font-weight: lighter;
+    font-family: var(--logo-text-font);    
+}
+.project-description, .project-link{
+    position: relative;
+    display: block;
+    padding: 2.5% 0;
+    font-size: calc(0.5rem + 1vmax);
+    font-family: var(--font);    
+}
+.project-urls{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#project-github{
+    height: calc((0.5rem + 1vmax)*3);
+    width: calc((0.5rem + 1vmax)*3);
+    content: url('/portfolio/style/pictures/github.svg');
+}
+#project-github:hover{ 
+    content: url('/portfolio/style/pictures/github-hover.svg');
+    cursor: pointer;
+}
+
+/* -------------------------------------------------------------------------------- */
+/*------------------  RESPONSIVE DESIGN BREAKPOINTS --------------------*/
+/*Better visualization of main 2 elements: side menu and project contents. Used for smaller sizes, but not yet phone size */
+@media all and (max-width: 950px) {
+    .project-picture-button{
+        font-size: 2.5rem;
+        -webkit-text-stroke: 1px black;
+        height: calc(300px + 5vh);
+    }
+    .project{
+        display: flex;
+        flex-direction: column;        
+    }
+    .project-text-container{
+        padding: 2.5% 0;
+    }
+    .project-img{
+        position: relative;       
+        top: 0;
+        right: 0;        
+        width: 100%;
+        height: calc(300px + 5vh);
+    }
+    .project-description{
+        font-size: calc(0.5rem + 0.5vmax + 0.2vw);
+    }
+    .project-picture-button{
+        height: calc(300px + 5vh);
+        top: 0;
+        padding: 0;
+    }
+    .project-title{
+        font-size: calc(0.6rem + 1.6vmax);
+    }
+    .project-description, .project-link, #text-content{
+        font-size: calc(0.5rem + 1.5vmax);
+    }
+    .miniature-summary{
+        font-size: calc(0.5rem + 1vmax);
+    }
+}
+
+/*Small devices*/
+@media all and (max-width:768px) {
+    main{
+        width: 100%;
+        justify-content: center;        
+    }
+    .project-picture-button{
+        font-size: calc(1rem + 1vmax);
+        -webkit-text-stroke: 1px black;
+    }
+    .miniature{
+        width: calc(var(--miniatureMinDimensions) + 1vw);
+        height: calc(var(--miniatureMinDimensions) + 3vh);
+    }
+    .miniature-summary-container{
+        -webkit-line-clamp:2;
+    }
+}

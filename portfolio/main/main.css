@@ -1,0 +1,515 @@
+body, html{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    user-select: none;
+    background-color: var(--bg-color);
+    min-width: 450px;    
+}
+main{
+    display: grid;
+    grid-template-columns: max(12.5%, 100px) auto;
+    height: 100%;
+    width: 100%;
+}
+nav{
+    display: grid;
+    grid-template-rows: 25% 50% 25%;
+    background-color: black;
+}
+
+
+/*---------------------------------------------------------------------*/
+/*----------------------------- LEFT MENU -----------------------------*/
+/*---------------------------------------------------------------------*/
+
+/*--------------------------- GEOMETRIC SHAPE --------------------------*/
+#design-container{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+#logo-2{
+    display: none;
+}
+#square{
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+    box-shadow:  6px -6px black, 
+                 12px -12px 10px var(--main),
+                 -6px 6px black, 
+                 -12px 12px 10px var(--main);
+    border: 3.5px white solid;
+    border-radius: 2.5px;
+    background-color: transparent;    
+}
+#square:hover{
+    animation-name: squareHover;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in;
+    box-shadow:  6px -6px black, 
+                 12px -12px 10px var(--contrast),
+                 -6px 6px black, 
+                 -12px 12px 10px var(--contrast);
+}
+@keyframes squareHover {
+    from {
+        box-shadow:  6px -6px black, 
+                 12px -12px 10px var(--main),
+                 -6px 6px black, 
+                 -12px 12px 10px var(--main);
+    }
+    to{
+        box-shadow:  6px -6px black, 
+                 12px -12px 10px var(--contrast),
+                 -6px 6px black, 
+                 -12px 12px 10px var(--contrast);
+    }
+}
+
+/*---------------------------------------------------------------------*/
+/*----------------------------- BUTTON SECTION --------------------*/
+
+#buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.menu-button{
+    width: 98%;
+    height: max-content;
+    padding: 8.5% 5%;
+    font-family: var(--font);
+    font-size: 1.5vmax;
+    font-weight: 800;
+    cursor: pointer;
+    box-shadow: inset 6px 1px 0px var(--main-dark);
+    color: white;
+    border: 0px;
+    margin:  0.5% 0;
+    /*Prepare background color transition on mouse hover*/
+    background: linear-gradient(135deg,  white 45%, transparent 5%) right,
+                linear-gradient(135deg, var(--bg-color) 45%, transparent 5%);
+    background-size: 250%;
+    transition: .5s ease-out;
+}
+
+.menu-button:hover{
+    background-position: left; /*Executes background color transition*/
+    box-shadow: inset 6px 1px 0px var(--contrast);
+    color: var(--contrast);
+}
+
+/*-----------------------------------------------------------------*/
+/*------------------------ FOOTER SECTION -----------------------------*/
+/* Icons source: https://icons8.com */
+footer{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+.social-media{
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 35%;
+    height: 35%;
+    cursor: pointer;
+}
+.linkedin{
+    content: url('/portfolio/style/pictures/linkedin.svg');    
+}
+.linkedin:hover{
+    content: url('/portfolio/style/pictures/linkedin-hover.svg');
+}
+.github{
+    content: url('/portfolio/style/pictures/github.svg');
+}
+.github:hover{
+    content: url('/portfolio/style/pictures/github-hover.svg');
+}
+/*---------------------------------------------------------------------*/
+
+/*---------------------------------------------------------------------*/
+/*----------------------------- HEADER SECTION ------------------------*/
+/*---------------------------------------------------------------------*/
+header{
+    width: 100%;
+    height: 100%;
+    background-color: var(--bg-color);
+    position: relative;
+}
+#header-content{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+    align-content: baseline;
+}
+#header-text-container{
+    position: relative;
+    margin: 7.5% 0%;
+    flex-grow: 1;
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+}
+#right-side{
+    flex-grow: 1;
+    overflow: hidden;
+    min-height: max(30%, 300px);
+}
+/*-------------------------TITLES SECTION -----------------------------*/
+/*Main title element*/
+#page-title{
+    /*Positioning and others*/
+    border-top: 5px solid currentColor;
+    border-bottom: 5px solid currentColor;
+    border-radius: 2.5px;
+    width: fit-content;    
+    position: relative;
+    /*Font*/
+    color: white;
+    font-size: calc(1rem + 3.25vw);
+    font-family: var(--font);
+    font-weight: 800;    
+}
+#title-section{
+    padding: 0 4%;
+}
+.border-shadow{
+    height: 5px;
+    background-color: var(--main);
+    width: 100%;
+    margin-left: 5%;
+    border-radius: 10px;
+}
+.top{
+    margin-top: 5%;
+}
+.bottom{
+    position: absolute;
+    margin-top: calc(5% + 5px);
+}
+/*Main title element: sentence row*/
+.title-row{
+    display: flex;
+    flex-direction: row;
+    
+}
+/*Main title element: capital letters*/
+.main-letter{
+    font-family: "Monoton", Helvetica, sans-serif;
+    font-weight: 400;   
+}
+@supports (-webkit-background-clip: text) {
+	.main-letter {  
+		color: transparent;
+		background: linear-gradient(-45deg, var(--main) 50%, var(--main-dark) 0);
+		-webkit-background-clip: text;
+        background-clip: text;
+	}
+}
+@supports (-webkit-background-clip: text) {
+	.main-letter:hover {  
+		color: transparent;
+        background: linear-gradient(-45deg, var(--contrast) 50%, red 0);
+		-webkit-background-clip: text;
+        background-clip: text;
+        animation-name: main-letterHover;
+        animation-duration: 500ms;
+	}
+}
+/*Animation for main-letter hover*/
+@keyframes main-letterHover {
+    0% {
+        background: linear-gradient(-45deg, var(--main) 50%, var(--main-dark) 0);
+        -webkit-background-clip: text;
+        background-clip: text;        
+        transform: rotate(0deg);
+    }
+    50%{
+        background: linear-gradient(-45deg, var(--contrast) 50%, red 0);
+        -webkit-background-clip: text;
+        background-clip: text;        
+        transform: rotate(8deg);
+    }
+    100% {
+        background: linear-gradient(-45deg, var(--contrast) 50%, red 0);
+        -webkit-background-clip: text;
+        background-clip: text;
+        transform: rotate(0deg);
+    }
+}
+
+
+.letter:hover{
+    animation-name: letterHover;
+    animation-duration: 500ms;
+    color: var(--contrast);
+}
+/*Animation for rest of the letters in title*/
+@keyframes letterHover {
+    0% {
+        color: white;
+        transform: rotate(0deg);
+    }
+    50%{
+        color: var(--contrast);
+        transform: rotate(8deg);
+    }
+    100% {
+        color: var(--contrast);
+        transform: rotate(0deg);
+    }
+}
+
+
+/*Subtitle element*/
+#page-subtitle{
+    color: white;
+    font-size: calc(0.75rem + 0.75vmax);
+    font-family: "Gill Sans", sans-serif;
+    font-weight: 200;
+    margin: 0;
+    padding: 0% 4% 4% 4%;
+    position: relative;
+}
+
+/*--- CANVAS ---*/
+canvas{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+}
+.letter, .main-letter, #page-subtitle, #logo-main-container p{
+    z-index: 2;
+}
+
+/*---------------------------------------------------------------------*/
+/*-------------------------CODE IMG SECTION----------------------------*/
+#code-img-container{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    transform: rotate(15grad);
+}
+#code-img{
+    font-family: 'Chalk', sans-serif;
+    font-size: calc(0.5rem + 1vmax);
+    color: white;
+    opacity: 0.7;   
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+/*---------------------------------------------------------------------*/
+/*----------------------------- LOGO SECTION --------------------*/
+#logo{
+    width: 100%;
+    position: absolute;
+    bottom: 3%;
+    right: 3%;
+}
+#logo-container{
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    justify-content: center;
+}
+#logo-main-container{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: right;
+}
+#logo-main-container p{
+    margin: 0;
+    width: fit-content;
+    /*Font*/
+    font-size: 4vmax;
+    font-family: 'Raleway', sans-serif;
+    color: white;
+    text-shadow: 4.5px 4.5px var(--main-dark);  
+    -webkit-text-stroke: 1px var(--bg-color); 
+}
+#logo-main{
+    font-size: 6vmax;
+}
+#logo-main-container p:hover{
+    animation-name: logoAnimation;
+    animation-duration: 0.5s;
+    animation-timing-function: ease-in;
+}
+/*Logo animation*/
+@keyframes logoAnimation {
+    0% { 
+        transform: rotate(0deg);
+        letter-spacing: normal;
+        text-shadow: 4.5px 4.5px var(--main);
+    }    
+    33% { 
+        transform: rotate(-5deg);
+        letter-spacing: 0.1vmax;
+        text-shadow: 6px 6px var(--main);
+    }
+    66% { 
+        transform: rotate(5deg);
+        letter-spacing: 0.1vmax;
+        text-shadow: 6px 6px var(--contrast);
+    }
+    100% { 
+        transform: rotate(0deg);
+        letter-spacing: normal;
+        text-shadow: 4.5px 4.5px var(--contrast);
+    }
+}
+
+#logo-text{
+    margin: 0;
+    font-family: var(--logo-text-font);
+    font-size: 1.25vmax;
+    font-weight: 100;   
+    color: white;
+}
+/*-----------------------------------------------------------------*/
+/* --------------------------------- SCROLL BAR ----------------------------------- */
+::-webkit-scrollbar {
+    width: 1vw;
+}
+/* scrollbar */
+::-webkit-scrollbar-thumb {
+    background: var(--main); 
+    border-radius: 5px;
+}  
+::-webkit-scrollbar-thumb:hover {
+    background: var(--contrast); 
+}
+  
+/* -------------------------------------------------------------------------------- */  
+/*--------------------- RESPONSIVE DESIGN SETTING-------------------*/
+
+/*Better visualization of main 2 elements: title + codeimg
+    used for smaller sizes, but not yet phone size */
+@media all and (max-width: 950px), (orientation: portrait) {
+
+    main{
+        grid-template-columns: max(20%, 150px) auto;     
+    }
+    #header-content { 
+       flex-direction: column;
+       flex-wrap: unset;
+       height: max-content;
+       position: relative;
+       top: 50%;
+       transform: translateY(-50%);
+    }
+    #right-side{
+        margin-top: 15%;
+    }    
+    .menu-button{
+        padding: 10% 5%;
+        font-size: 2vmax;        
+    }
+ }
+
+/*Mediun + small devices*/
+@media all and (max-width: 768px){
+    main{
+        display: unset;  
+    }
+    #design-container, footer{
+        display: none;
+    }
+    #logo-2{
+        display: block;
+    }
+    #logo{
+        display: none;
+    }
+    nav{
+        height: fit-content;
+        grid-template-rows: 100%;
+        grid-template-columns: 20% 80%;
+        padding: 2% 0;
+    }
+    #header-content {       
+        top: unset;
+        transform: unset;
+     }
+    #buttons{
+        flex-direction: row;
+        justify-content: center;
+        text-align: center;        
+    }
+    .menu-button{
+        width: 25%;
+        height: fit-content;
+        padding: 3.5% 0;
+        font-size: calc(0.5rem + 1.25vmax);
+        margin:  auto 0.5%;
+        box-shadow: inset 0px 3px 0px var(--main-dark);        
+    }
+    .menu-button:hover{
+        box-shadow: inset 0px 3px 0px var(--contrast);
+    }
+    .social-media{
+        width: 70%;
+        height: 70%;
+    }
+    #header-text-container{
+        margin: 10% 0%
+    }
+    #right-side{
+        margin-top: 5%;
+    }
+
+    /*Logo on top menu button appear*/
+    #logo-2{
+        width: 100%;     
+        height: 100%;   
+        display: flex;        
+        text-align: right;
+        justify-content: center;
+    }
+    #logo-main-container-2{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+    #logo-main-container-2 p{
+        margin: 0;        
+        /*Font*/
+        font-size: 5vmax;
+        font-family: 'Raleway', sans-serif;
+        color: white;
+        text-shadow: 4.5px 4.5px var(--main-dark);  
+        -webkit-text-stroke: 1px var(--bg-color); 
+    }
+    #logo-main-2{
+        font-size: 7vmax;
+    }
+    #logo-main-container-2 p:hover{
+        animation-name: logoAnimation;
+        animation-duration: 0.5s;
+        animation-timing-function: ease-in;
+    }
+}
+
+
+
+
+
+

@@ -5,10 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pablo Web Development</title>
-    <script src="main/mouse-trail.js"></script>
-    <script src="main/events.js"></script>
-    <link rel="stylesheet" href="../style/main-variables.css">
-    <link rel="stylesheet" href="main/main.css">
+    <script src="/portfolio/main/mouse-trail.js"></script>
+    <script src="/portfolio/main/events.js"></script>
+    <link rel="stylesheet" href="/portfolio/style/main-variables.css">
+    <link rel="stylesheet" href="/portfolio/main/main.css">
+    <link rel="icon" type="image/x-icon" href="/portfolio/style/pictures/favicon.png">
 </head>
 <body>
     <main>
@@ -21,11 +22,11 @@
             <div id="design-container">
                 <div id="square"></div>
             </div>
-            <div id="buttons">                
+            <div id="buttons">        
+                <button class="menu-button" id="home-button">HOME</button>             
                 <button class="menu-button" id="work-button">WORK</button>
                 <button class="menu-button" id="about-button">ABOUT</button>
-                <button class="menu-button" id="contact-button">CONTACT</button>
-                <button class="menu-button" id="other">OTHER</button>
+                <button class="menu-button" id="contact-button">CONTACT</button>                
             </div>
             <footer>
                 <img class="social-media github" alt="GitHub">
@@ -67,7 +68,7 @@
                             &#60;div&#62; <br>
                             &emsp;&#60;h1&#62;Welcome here!&#60;&#47;h1&#62; <br>
                             &emsp;&#60;script&#62; <br>
-                            &emsp;&emsp;if (need_help === true) { <br>
+                            &emsp;&emsp;if (need_help) { <br>
                             &emsp;&emsp;&emsp;Contact.Pablo(); <br>
                             &emsp;&emsp;}<br>
                             &emsp;&#60;&#47;script&#62; <br>
