@@ -46,42 +46,59 @@
             <button class="menu-button" id="about-button">ABOUT</button>
             <button class="menu-button" id="contact-button">CONTACT</button>                
         </div>
-        <footer>
-            <img class="social-media github" alt="GitHub">
-            <img class="social-media linkedin" alt="LinkedIn">
-        </footer>
     </nav>
     
     <div id="page-content">
         <header>
             <div id="main-title">
-                <span class="main-title-element">&#91;</span><span>&#32;CONTACT&#32;</span><span class="main-title-element">&#93;</span><br>          
+                <span>&#32;CONTACT&#32;</span>
             </div><br>
-            <span class="subtitle-text">You can find me at my <a href="https://www.linkedin.com/in/pablo-fdezfdez/">LinkedIn</a> 
-                or <a href="https://github.com/pabloff95">GitHub</a> profiles.</span><br>
-            <span class="subtitle-text">But If you prefere contact me directly, write a message bellow.</span>
         </header>
-        <main>
-            <form action="contact.html">
-            <!--form action="contact.php" method="POST"-->
-                <div class="form-element">                    
-                    <input type="text" class="text-field input" name="name">                                        
-                    <label class="label-element">Name</label>
-                </div>
-                <br>
-                <div class="form-element">                    
-                    <input type="text" class="text-field input" name="email">                    
-                    <label class="label-element">Email</label>
-                </div>
-                <br>
-                <div class="form-element">
-                    <textarea class="textarea-field input" name="message">Write your message here ...</textarea>                                                 
-                </div>
-                <div class="form-element">
-                    <input type="submit" value="SEND" name="contactForm" id="submit-button">
-                </div>
-            </form>
-        </main>
+        <div id="page-main-content">
+            <section>
+                <span class="subtitle-element">Where to find me</span>
+                    <div id="contact-networks">
+                        <div class="contact">
+                            <img alt="Location" class="contact-img clickable" id="location-img">
+                            <span class="contact-img-subtext-title">Based in</span>
+                            <span class="contact-img-subtext-text">Salem, Germany</span>
+                        </div>
+                        <div class="contact">
+                            <img alt="GitHub Profile" class="contact-img clickable" id="github-img">
+                            <span class="contact-img-subtext-title">GitHub</span>                            
+                        </div>
+                        <div class="contact">
+                            <img alt="LinkedIn Profile" class="contact-img clickable" id="linkedin-img">
+                            <span class="contact-img-subtext-title">LinkedIn</span>                            
+                        </div>
+                    </div>                
+            </section>
+            <main>
+                <span class="subtitle-element">Send an email</span>
+                <form action="contact.html">
+                <!--form action="contact.php" method="POST"-->
+                    <div class="form-element">                    
+                        <input type="text" class="text-field input" name="name" id="name-input" placeholder="Name" autocomplete="off" maxlength="60" required />
+                        <label class="label-element">Name</label>
+                        <span class="form-error" id="name-error-tag">Invalid name format</span>                                                                
+                    </div>
+                    <br>
+                    <div class="form-element">                    
+                        <input type="email" class="text-field input" name="email" id="email-input" placeholder="Email"  autocomplete="off" maxlength="150" required />                                                            
+                        <label class="label-element">Email</label>
+                        <span class="form-error" id="email-error-tag">Invalid email format</span>                        
+                    </div>
+                    <div class="form-element textarea-container">                        
+                        <textarea class="textarea-field input" name="message" id="message-input" placeholder="Write your message here ..." required></textarea>                                                                         
+                        <label id="label-textarea">Message</label>
+                    </div>
+                    <div class="form-element" id="submit-container">
+                        <input type="submit" value="SEND" name="contactForm" id="submit-button">
+                        <div id="submit-label"><label>Fill correctly all the fields</label></div>
+                    </div>
+                </form>
+            </main>
+        </div>
     </div>    
 
 </body>

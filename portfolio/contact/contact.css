@@ -3,61 +3,185 @@
     --font-size-inputs: calc(0.5rem + 0.75vmax);   
     --height-text-input: calc(0.5rem + 1vmax);   
 }
+#page-content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+#page-main-content{
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: clamp(150px, 30%, 400px) clamp(350px, 70%, 1000px);
+}
 
-/*------------------------ HEADER CONTENT -----------------------------*/
+/*------------------------ SECTION CONTENT -----------------------------*/
 /*---------------------------------------------------------------------*/
-
-.subtitle-text{
+section{
     position: relative;    
-    font-size: var(--font-size-texts);
-    font-family: var(--font);
+    height: 90%;
+}
+.subtitle-element{
+    position: relative;
+    font-size: calc(var(--font-size-texts)*1.6);    
+    font-family: var(--logo-text-font);
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+#contact-networks{
+    position: relative;    
+    font-family: var(--font);      
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+.contact{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: fit-content;
+    margin: auto;
+}
+.contact-img{
+    position: relative;
+    padding: 3% 0;
+    height: clamp(60px, 100px, 5vh);  
+    min-width: 60px;
+    min-height: 60px;    
+}
+.clickable{
+    cursor: pointer;
+}
+#location-img{
+    content: url('pictures/location.svg');     
+}
+#github-img{
+    content: url('pictures/github.svg');    
+}
+#linkedin-img{
+    content: url('pictures/linkedin.svg');    
+}
+#location-img:hover{
+    content: url('pictures/location-hover.svg');    
+}
+#github-img:hover{
+    content: url('pictures/github-hover.svg');    
+}
+#linkedin-img:hover{
+    content: url('pictures/linkedin-hover.svg');    
+}
+.contact-img-subtext-title{    
+    font-size: var(--font-size-texts);  
+}
+.contact-img-subtext-text{    
+    font-size: var(--font-size-inputs);  
 }
 
 /*---------------------------------------------------------------------*/
 /*------------------------ FORM ELEMENTS ------------------------------*/
 main{
     width: 100%;
+    height: 100%;
     position: relative;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    justify-items: center;
 }
 form{
-    margin: 5vh auto;
+    position: relative;
     font-family: var(--font);
     font-size: var(--font-size-inputs);   
-    padding: 2% 5% 1% 5%;
-    width: 50%;
+    padding: 5% 5% 1% 5%;
+    width: 75%;
+    height: 75%;
     /*Main styles*/ 
     background-color: black;
-    box-shadow: 0 10px 20px var(--main-dark); /*change colour on click on input elements, controlled by TS*/
+    box-shadow: 0 5px 8px var(--main-dark); /*change colour on click on input elements, controlled by TS*/
     border-radius: 15px;
+    margin: auto;
 }
 .text-field, .textarea-field{
+    border: rgb(43, 42, 42) 2px solid;
     border-radius: 10px;
     font-size: var(--font-size-inputs);   
+    background-color: var(--bg-color);
+    color: white;
+}
+/* Avoid browser autofill text changing colors*/
+.text-field:-webkit-autofill,             
+.text-field:-webkit-autofill:hover,             
+.text-field:-webkit-autofill:focus {
+    color: white;
+    background-color: var(--bg-color);
+    transition: background-color 99999s, color 99999s;
 }
 .text-field{
+    position: relative;
+    padding: 0 2%;
+    z-index: 2;
     width: 50%;
 }
+.text-field::placeholder, .textarea-field::placeholder{
+    color: var(--main);
+    transition: 0.5s color;
+}
 .textarea-field{
-    color: black;
+    position: relative;
+    padding: 0 2%;
     width: 100%;
-    min-height: 20vh;
+    min-height: 35vh;
+    max-height: 35vh;
     resize: none;
 }
-
+.form-error{
+    display: none;
+    color: var(--contrast);
+    position: absolute;
+    left: 56%; /*50% width input + 2% padding left + 2% padding right* + 2% extra space */
+}
+/* ---- Text area - label animation ----*/
+.textarea-container{
+    margin-top: 1%;
+    display: flex;
+    flex-direction: column-reverse;
+}
+#label-textarea{
+    position: relative;
+    color: black;
+    font-size: calc(0.25rem + 0.8vmax); 
+    left: 2%;
+    transition: color 0.75s, left 0.75s;
+}
+.textarea-field:focus + #label-textarea{
+    color: var(--contrast);
+    left: 0%;
+}
 .textarea-field:focus{
     outline: none;
     border: 2px solid var(--contrast);
 }
+.textarea-field:focus::placeholder {
+    color: var(--bg-color);
+}
 /* ---- Input - label animation ----*/
+.text-field:focus::placeholder {
+    color: var(--bg-color);
+}
+.form-element{
+    position: relative;
+}
 .label-element, .text-field{
     height: var(--height-text-input);
 }
 .label-element{
     position: relative;
-    left: -50%;
-    color: black;
+    left: -52%;
+    cursor: text;
+    z-index: 1;
+
 }
 .text-field:focus + .label-element,
 .label-element:target{
@@ -67,16 +191,16 @@ form{
 }
 @keyframes label-animation{
     from{
-        color: black;
+        color: var(--main);
         bottom: auto;        
         font-size: var(--font-size-inputs);   
-        left: -50%;
+        left: -52%;
     }
     to{
         color: var(--contrast);
         bottom: calc(var(--height-text-input) + 0.5vh);        
         font-size: calc(0.25rem + 0.8vmax); 
-        left: -52%;
+        left: -55%;
     }
 }
 .text-field:focus{
@@ -84,13 +208,27 @@ form{
     border: 2px solid var(--contrast);
 }
 
+
+
+/*--------------------Submit section--------------*/
+#submit-container{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    height: fit-content;
+    text-align: center;
+}
+#submit-label{
+    position: relative;
+    font-size: 0.85rem;
+    color: var(--contrast);
+    display: none;
+}
 /* ---- Button ----*/
 #submit-button{
     position: relative;
     margin: 3% auto 1% auto;
     padding: 1% 5%;
-    left: 50%;
-    transform: translateX(-50%);
     font-size: var(--font-size-texts);      
     letter-spacing: 3px;  
     /*Color styles*/
@@ -99,12 +237,19 @@ form{
     background-color: transparent;
     border-radius: 4px;
 }
-#submit-button:hover{    
+#submit-button:disabled:hover{
+    cursor:not-allowed;
+}
+#submit-button:disabled:hover+div{
+    display: unset;
+}
+#submit-button:enabled:hover{    
     cursor: pointer;
     animation: send-hover forwards;
     animation-duration: 0.25s;
     animation-timing-function: ease-in;
 }
+
 @keyframes send-hover{
     from {
         background-color: transparent;

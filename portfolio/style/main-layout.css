@@ -4,7 +4,7 @@
             - PAGE-CONTENT <DIV> AND MAIN-TITLE ELEMENTS STYLE
             - MAIN COLORS APPLIED
             - BODY GRID LAYOUT
-        * Not used by index.html
+        * Not used by "index.html"
 */
 
 html, body{
@@ -205,24 +205,39 @@ header{
 }
 #main-title{    
     position: relative;    
-    width: 90%;
-    padding: 0 2.5%;     
-    font-size: calc(1.5rem + 3vmax);
+    width: fit-content;
+    font-size: calc(1.25rem + 2.7vmax);
     font-family: var(--logo-text-font);
     font-weight: lighter; 
-    -webkit-text-stroke: 1px 1px black;      
-    /*Do not allow text selection*/
-    -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-    -khtml-user-select: none; /* Konqueror HTML */
-    -moz-user-select: none; /* Old versions of Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    user-select: none;
+    -webkit-text-stroke: 1px 1px black;          
 }
-.main-title-element{
-    font-size: calc(1rem + 2vmax);
-    text-shadow: 4.5px 4.5px var(--main-dark);  
+
+#main-title span{    
+    display: block; 
+    padding: 0 100% 0 12.5%;
+    width: 100%;    
+    transition: all 0.25s;
+    -webkit-text-stroke: 1px var(--bg-color);
+    background: linear-gradient(
+        0deg,
+        var(--bg-color) 0%, var(--bg-color) 7.5%, 
+        var(--main) 7.5%, var(--main) 25%, 
+        var(--bg-color) 25%, var(--bg-color) 100%);
 }
+#main-title span::first-letter{
+    font-size: calc(1.5rem + 3vmax);     
+}
+#main-title span:hover{
+    color: var(--contrast);
+    cursor: default;
+    padding: 0 12.5%;
+    background: linear-gradient(
+                0deg,
+                var(--bg-color) 0%, var(--bg-color) 7.5%, 
+                var(--contrast) 7.5%, var(--contrast) 25%, 
+                var(--bg-color) 25%, var(--bg-color) 100%);
+}
+
 /*---------------------------------------------------------------------*/
 
 
