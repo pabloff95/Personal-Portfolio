@@ -15,3 +15,21 @@
     --font: "Gill Sans", sans-serif;
     --logo-text-font: 'Impact', 'Raleway', sans-serif;
 }
+
+/*Custon select text colors*/
+::selection {
+  color: var(--bg-color);
+  background: var(--main);
+}
+::-moz-selection{ /*firefox*/
+    color: var(--bg-color);
+    background: var(--main);
+}
+a::selection {
+    color: var(--contrast);
+    background: var(--main);
+}
+
+html,body{
+    min-width: 500px;
+}

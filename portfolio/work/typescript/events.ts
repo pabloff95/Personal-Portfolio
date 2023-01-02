@@ -8,11 +8,12 @@ window.addEventListener("load", function() {
         "In every game, a random combination of 4 colours is automatically created. The objective of the player is to guess this code in less than 10 rounds."  + "<br><br>" +
         "Furthermore, this web application provides the opportunity to play as logged user. When logged, at the end of each game a punctuation is displayed. This punctuation, together with other game statistics, is stored in the data base, which allows the user to keep track of his games and to create a global rank of the logged players.";
     const PROJECT2_DESCRIPTION:string = "The Finance Manager is a web-application that allows to monitore expenses, income and investments. The user can record new data and edit/delete the existing records." + "<br><br>" +
-        "Besides this application provides an overview of the finances by using different charts from the \"CanvasJS\" library. It also uses the PHP library PHPSpreadsheet, to import and export data as \".xlsx\" files. ";        
-    const PROJECT3_DESCRIPTION:string = "This project displays the weather of any town introduced by the user. It shows updated weather information thanks to the OpenWeather Map API. This allows the user to see the weather of the current day and also the forecast for the next 5 days. " + "<br><br>" +
+        "Besides this application shows to the user an overview of the finances, thanks to the different charts provided by the library \"CanvasJS\". It also uses the PHP library PHPSpreadsheet, to import and export data as \".xlsx\" files. ";        
+    const PROJECT3_DESCRIPTION:string = "This project displays the weather of any town introduced by the user. It displays updated weather information provided by the OpenWeather Map API. This allows the user to see the weather of the current day and also the forecast for the next 5 days. " + "<br><br>" +
         "Furthermore, this project uses the Unsplash API to update the background picture to display one of the town typed by the user.";
     const PROJECT4_DESCRIPTION:string = "This project is a web version of the classic snake game. This project was completely developed with JavaScript vanilla, using a canvas element as the main gameboard.";
-    const PROJECT5_DESCRIPTION:string = "Data analysis performed to study of impacts of rising temperatures on a plant species population. Analyses and charts performed using R." + "<br><br>" + 
+    const PROJECT5_DESCRIPTION:string = "This application is a basic calculator developed with React. It performs basic operations and keeps records of all the operations performed in a side panel.";
+    const PROJECT6_DESCRIPTION:string = "Data analysis performed to study of impacts of rising temperatures on a plant species population. Analyses and charts performed using R." + "<br><br>" + 
         "The study and its results can be found <a  href='https://doi.org/10.1111/plb.13418'>here</a>.";
 
     // Create objects
@@ -20,15 +21,17 @@ window.addEventListener("load", function() {
     let project2:Project = new Project("Finance Manager", "Web-application to keep track of all your finances", "finance-manager.PNG", PROJECT2_DESCRIPTION, null, "https://github.com/pabloff95/Finance-Manager");    
     let project3:Project = new Project("Weather App", "Wep-application to consult the weather forecast of any town", "weather-app.PNG", PROJECT3_DESCRIPTION, null, "https://github.com/pabloff95/Weather-App");    
     let project4:Project = new Project("Snake Game", "Web adaptation of the classic snake game", "snake-game.PNG", PROJECT4_DESCRIPTION, null, "https://github.com/pabloff95/Snake-Game");    
-    let project5:Project = new Project("Research Study", "Data analysis study on Plant Ecology", "research-study.PNG", PROJECT5_DESCRIPTION, "doi.org/10.6084/m9.figshare.c.5757800", "https://github.com/pabloff95/Research-Study");    
+    let project5:Project = new Project("Calculator", "Application to perform basic operations", "calculator-1.PNG", PROJECT5_DESCRIPTION, null, "https://github.com/pabloff95/React-Calculator");    
+    let project6:Project = new Project("Research Study", "Data analysis study on Plant Ecology", "research-study.PNG", PROJECT6_DESCRIPTION, "doi.org/10.6084/m9.figshare.c.5757800", "https://github.com/pabloff95/Research-Study");    
     // Add pictures set    
     project1.addPictureURL(["guessgame-1.PNG", "guessgame-2.PNG", "guessgame-3.PNG", "guessgame-4.PNG"]);
     project2.addPictureURL(["finance-manager-1.PNG", "finance-manager-2.PNG", "finance-manager-3.PNG", "finance-manager-4.PNG"]);
     project3.addPictureURL(["weather-app-1.PNG", "weather-app-2.PNG"]);
     project4.addPictureURL(["snake-game-1.PNG", "snake-game-2.PNG"]);
-    project5.addPictureURL(["research-study-1.PNG", "research-study-2.PNG"]);
+    project5.addPictureURL(["calculator-2.PNG"]);
+    project6.addPictureURL(["research-study-1.PNG", "research-study-2.PNG"]);
 
-    let projects:Project[] = [project1, project2, project3, project4, project5];
+    let projects:Project[] = [project1, project2, project3, project4, project5, project6];
 
     // Display projects as HTML elements (miniature elements). Then add empty elements until filling complete.
     if (CONTENT != null) {
@@ -153,7 +156,16 @@ window.addEventListener("load", function() {
         window.location.href = "/portfolio/about/about.html";
     });
     document.getElementById("contact-button")?.addEventListener("click", () => {
-        window.location.href = "/portfolio/contact/contact.html";
+        window.location.href = "/portfolio/contact/contact.php";
+    });
+
+    // Change pictures displayed if user clics on left-arrow / right-arrow, if the buttons are available
+    this.document.addEventListener("keyup", function(event){
+        const KEY:string = event.key;
+        const LEFT_BUTTON: HTMLElement | null = document.getElementById("img-left-button");
+        const RIGHT_BUTTON: HTMLElement | null = document.getElementById("img-right-button");
+        if (KEY === "ArrowLeft" && LEFT_BUTTON) LEFT_BUTTON.click();
+        if (KEY === "ArrowRight" && RIGHT_BUTTON) RIGHT_BUTTON.click();        
     });
 
     // --------------------------------- URLs TO SOCIALNETWORK LOGOS (footer) -----------------------------------------

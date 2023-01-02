@@ -96,7 +96,7 @@ form{
     font-size: var(--font-size-inputs);   
     padding: 5% 5% 1% 5%;
     width: 75%;
-    height: 75%;
+    height: fit-content;
     /*Main styles*/ 
     background-color: black;
     box-shadow: 0 5px 8px var(--main-dark); /*change colour on click on input elements, controlled by TS*/
@@ -125,7 +125,7 @@ form{
     width: 50%;
 }
 .text-field::placeholder, .textarea-field::placeholder{
-    color: var(--main);
+    color: white;
     transition: 0.5s color;
 }
 .textarea-field{
@@ -221,8 +221,7 @@ form{
 #submit-label{
     position: relative;
     font-size: 0.85rem;
-    color: var(--contrast);
-    display: none;
+    color: transparent;
 }
 /* ---- Button ----*/
 #submit-button{
@@ -241,7 +240,7 @@ form{
     cursor:not-allowed;
 }
 #submit-button:disabled:hover+div{
-    display: unset;
+    color: var(--contrast);
 }
 #submit-button:enabled:hover{    
     cursor: pointer;
@@ -271,3 +270,84 @@ form{
 }
 
 /*---------------------------------------------------------------------*/
+/*-------------------- SENT FORM MESSAGES --------------------------*/
+#sent-form-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: auto;
+    height: 100%;
+    position: relative;
+}
+.sent-form-element{
+    height: clamp(90px,150px, 220px);
+    position: relative;
+    top: 25%;
+    
+    font-family: var(--font);
+    font-size: var(--font-size-inputs);   
+}
+.mail-sent-text{
+    margin: 1% 0;
+}
+
+/*---------------------------------------------------------------------*/
+/*---------------------------------------------------------------------*/
+/*---------------------------------------------------------------------*/
+
+/*--------------------- RESPONSIVE DESIGNS BREAKPOINTS ----------------*/
+@media all and (max-width: 950px) {
+    #sent-form-container{
+        flex-direction: column-reverse;    
+    }
+    #sent-form-container .sent-form-element{
+        height: unset;
+        top: unset;        
+    }
+    .sent-form-element img{
+        position: relative;
+        height: 75%;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}
+@media all and (max-width: 768px) {
+    #page-main-content{
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: center;
+    }
+    section{
+        height: fit-content;
+    }
+    .subtitle-element{
+        margin: 5%;
+    }
+    #contact-networks{
+        flex-direction: row;
+    }
+    .contact{
+        margin: 0;
+    }
+    main{
+        display: block;
+    }
+    form{
+        margin-bottom: 5%;
+    }
+    #sent-form-container{
+        flex-direction: row;    
+        justify-content: center;
+    }
+    .sent-form-element{
+        height: unset;
+    }
+    .sent-form-element img {
+        position: relative;
+        height: 70%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
+}

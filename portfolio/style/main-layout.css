@@ -15,10 +15,11 @@ html, body{
     position: relative;
     z-index: -50;    
     background-color: var(--bg-color);
+    overflow: hidden;
 }
 body{
     display: grid;
-    grid-template-columns: max(12.5%, 100px) auto;     
+    grid-template-columns: max(calc(10vw + 5%), 100px) auto;     
 }
 
 a {
@@ -61,12 +62,15 @@ nav{
 #logo-main-container p{
     margin: 0;
     width: fit-content;
-    /*Font*/
-    font-size: 4vmax;
+    /*Font*/    
     font-family: 'Raleway', sans-serif;
+    font-weight: bolder;
     color: white;
     text-shadow: 4.5px 4.5px var(--main-dark);  
     -webkit-text-stroke: 1px var(--bg-color);    
+}
+.logo-side{
+    font-size: 4vmax;    
 }
 #logo-main{
     font-size: 6vmax;
@@ -181,6 +185,7 @@ footer{
     width: 100%;        
     color: white;      
     overflow: auto;
+    height: 100%;
 }
 main{
     width: 90%;
@@ -209,12 +214,11 @@ header{
     font-size: calc(1.25rem + 2.7vmax);
     font-family: var(--logo-text-font);
     font-weight: lighter; 
-    -webkit-text-stroke: 1px 1px black;          
 }
 
 #main-title span{    
     display: block; 
-    padding: 0 100% 0 12.5%;
+    padding: 0 12.5%;
     width: 100%;    
     transition: all 0.25s;
     -webkit-text-stroke: 1px var(--bg-color);
@@ -227,15 +231,9 @@ header{
 #main-title span::first-letter{
     font-size: calc(1.5rem + 3vmax);     
 }
-#main-title span:hover{
-    color: var(--contrast);
+#main-title span:hover{    
     cursor: default;
-    padding: 0 12.5%;
-    background: linear-gradient(
-                0deg,
-                var(--bg-color) 0%, var(--bg-color) 7.5%, 
-                var(--contrast) 7.5%, var(--contrast) 25%, 
-                var(--bg-color) 25%, var(--bg-color) 100%);
+    font-size: calc(1.5rem + 3vmax);     
 }
 
 /*---------------------------------------------------------------------*/
@@ -256,7 +254,6 @@ header{
     background: var(--contrast); 
 }
 
-
 /* -------------------------------------------------------------------------------- */
 /*------------------  RESPONSIVE DESIGN BREAKPOINTS --------------------*/
 /*Better visualization of main 2 elements: side menu and project contents. Used for smaller sizes, but not yet phone size */
@@ -273,54 +270,115 @@ header{
         -webkit-text-stroke: 0.5px var(--bg-color);   
     }
 }
-
 /*Small devices*/
 @media all and (max-width:768px) {
-    body{
-        display: block;  
+    html,body{
+        all:unset;
+        display: flex;
+        flex-direction: column;  
+        height: fit-content;
+        overflow: auto;
+        margin: 0;
+        padding: 0;
+        z-index: -50;
+        background-color: var(--bg-color);
+        position: relative;
     }
     #page-content{
         padding: 5% 0;
-    }
-    nav{
-        height: fit-content;
-        grid-template-rows: 100%;
-        grid-template-columns: 20% 80%;
-        padding: 2% 0;
+        overflow: hidden;
     }
     footer{
         display: none;
     }
+    nav{
+        all: unset;
+        background-color: black;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
     #buttons{
         flex-direction: row;
-        justify-content: center;
-        text-align: center;        
+        justify-content: flex-end;
+        text-align: center;     
+        margin: auto 1%;   
     }
     .menu-button{
-        width: 25%;
+        all: unset;
+        font-family: var(--font);
+        font-size: 1.5vmax;
+        font-weight: 800;
+        cursor: pointer;        
+        padding: 2%;
+        margin: 0 2.5%;
+        border-radius: 2.5px;
         height: fit-content;
-        padding: 3.5% 0;
-        font-size: calc(0.5rem + 1.25vmax);
-        margin:  auto 0.5%;
-        box-shadow: inset 0px 3px 0px var(--main-dark);        
+        color: black;
+        background-color: var(--main);               
     }
     .menu-button:hover{
-        box-shadow: inset 0px 3px 0px var(--contrast);
+        all: unset;
+        font-family: var(--font);
+        font-size: 1.5vmax;
+        font-weight: 800;
+        cursor: pointer;       
+        padding: 2%;
+        margin: 0 2.5%;
+        height: fit-content;
+        border-radius: 2.5px;
+        /*hover effects*/
+        background: var(--contrast);              
     }
     .social-media{
         width: 70%;
         height: 70%;
     }
+    /*---- LOGO SECTION ----*/
+    .logo-side{
+        display: none;
+    }
+    #logo{
+        width: fit-content;
+        margin-left: 5%;
+    }
     #logo-main-container p {
         font-size: 5vmax;
     }
     #logo-main{
-        font-size: 7vmax;
+        font-size: 5vmax;
     }
     #logo-text{
         display: none;
     }
     
+    /*---- HEADER SECTION ----*/
+    #main-title span{
+        padding: 0 2.5%;
+        background: var(--main);
+        border-radius: 5px;
+        color: var(--bg-color);
+        transition: all 0.5s ease;
+    }
+    #main-title span::first-letter{
+        font-size: unset;
+    }
+    #main-title span:hover{
+        all: unset;
+        padding: 0 2.5%;        
+        border-radius: 5px;        
+        transition: all 0.5s ease;
+        /*hover*/
+        color: var(--contrast);
+        background: transparent;
+    }
+    /*--------- CONTACT SECTION ------*/ 
+    #contact-networks{
+        margin-bottom: 5%;
+    }
+    .contact{
+        padding: 3% 0;
+    }
 }
 
 

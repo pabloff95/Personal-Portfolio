@@ -12,13 +12,13 @@ window.addEventListener("load", function () {
         window.location.href = "/portfolio/about/about.html";
     });
     (_d = document.getElementById("contact-button")) === null || _d === void 0 ? void 0 : _d.addEventListener("click", () => {
-        window.location.href = "/portfolio/contact/contact.html";
+        window.location.href = "/portfolio/contact/contact.php";
     });
     // --------------------------------- URLs TO CONTACT ICONS (section) -----------------------------------------
     // Add URL to contact icons
     (_e = document.querySelector("#location-img")) === null || _e === void 0 ? void 0 : _e.addEventListener("click", function () {
         var _a;
-        (_a = window.open("https://www.google.com/maps/place/88682+Salem/@47.7705336,9.2936284,12z/data=!3m1!4b1!4m5!3m4!1s0x479a573b01421c2f:0x41f6bb7a5df84e0!8m2!3d47.7621271!4d9.2940477", "_blank")) === null || _a === void 0 ? void 0 : _a.focus();
+        (_a = window.open("https://goo.gl/maps/GfhU9KLJfmUDT4a39", "_blank")) === null || _a === void 0 ? void 0 : _a.focus();
     });
     (_f = document.querySelector("#github-img")) === null || _f === void 0 ? void 0 : _f.addEventListener("click", function () {
         var _a;

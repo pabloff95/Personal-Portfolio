@@ -4,18 +4,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pablo Web Development</title>    
+    <meta name="description" content="Welcome to my portfolio website, this section shows all the relevant projects I have developed.">
+    <meta name="keywords" content="web developer, portfolio, projects, frontend, javascript, about me, about">
+    <meta name="author" content="Pablo Fernandez">
+    <title>Pablo Web Development</title>        
     <script src="scripts/events.js"></script>
     <link rel="stylesheet" href="/portfolio/style/main-variables.css">
     <link rel="stylesheet" href="/portfolio/style/main-layout.css">
-    <link rel="icon" type="image/x-icon" href="/portfolio/style/pictures/favicon.png">
+    <link rel="stylesheet" href="about.css">
+    <link rel="icon" type="image/x-icon" href="/portfolio/style/pictures/favicon.png">    
 </head>
 <body>
     <nav>
         <div id="logo">
             <div id="logo-container">
                 <div id="logo-main-container">
-                    <p>&#60;<span id="logo-main">P</span>&#62;</p>
+                    <p><span class="logo-side">&#60;</span><span id="logo-main">P</span><span class="logo-side">&#62;</span></p>
                 </div>
                 <p id="logo-text">Web Developer</p>
             </div>
@@ -32,13 +36,165 @@
         </footer>
     </nav>
     
-    <div id="page-content">
-        <header>
-            <div id="main-title">
-                <span>ABOUT</span>        
-            </div>
-        </header>
-        <main></main>
+    <div id="page-content">        
+        <main>            
+            <section class="first-section">
+                <div class="half-section-container profile-picture-container hidden hidden-left">                    
+                    <img src="pictures/profile.png" id="profile-picture" alt="Profile picture">                    
+                </div>
+                <div class="half-section-container first-section-title-container hidden hidden-right">
+                    <div>
+                        <span id="first-section-title">
+                            I am a Spanish <span class="text-key-word">web developer</span> and <span class="text-key-word">biologist</span>, with a great passion for frontend development
+                        </span>
+                    </div>
+                    <div class="key-words-container">
+                        <span class="keyword">Web development</span>
+                        <span class="keyword">Databases</span>
+                        <span class="keyword">Data analysis</span>
+                        <span class="keyword">Science</span>
+                    </div>                    
+                </div> 
+                <div id="scroll-title">                    
+                    <img src="./pictures/scroll.svg">         
+                </div>   
+            </section>
+            <section>
+                <span class="section-title hidden hidden-left">About me</span>
+                <div class="section-content">     
+                    <div class="section-about">
+                        <div class="hidden hidden-left">
+                        I grew up in the north of Spain, in Santander. But I have had the opportunity to live in various locations such as Barcelona (Spain), Gerona (Spain), 
+                        Looe (UK), Ghent (Belgium) and Salem (Germany). Now, I am based in Neuburg an der Donau (Germany). Each of these places has allowed me to learn from diverse
+                         cultures and meet incredible people. Because of it I can speak                        
+                            <div class="idiom-container">
+                                <span class="idiom-level">English</span>,
+                                <span class="idiom-box">C1 - Cambridge certificate</span>
+                            </div>
+                            <div class="idiom-container">
+                                <span class="idiom-level">Spanish</span>
+                                <div class="idiom-box">Native speaker</div>
+                            </div> and  
+                            <div class="idiom-container">
+                                <span class="idiom-level">German</span>
+                                <div class="idiom-box">B1 - Telc Zetifikat</div>
+                            </div>.<br><br>
+                    
+                        During my undergraduate studies, I commuted daily approximately four hours between Barcelona and Gerona, but I used this time for studying and for working in 
+                        my projects. This determination, combined with my curiosity, has brought me to learn from a variety of subjects including software development, data analysis, economics, 
+                        ecology, and genetics. I am always eager to continue learning and improving.<br><br>
+
+                        In addition to my studies, I am also passionate about new experiences and challenges. This led me to participate in an Erasmus volunteer project,where I lived in 
+                        a caravan for a year in the UK. I believe volunteering is an excellent way to grow as an individual and make a positive impact in the world.<br><br>                    
+
+                        In my free time I enjoy staying active through sports, coding personal projects, spending time with friends and family, reading and cooking. 
+                        </div>
+                        <div class="about-img-container hidden hidden-right">
+                            <img id="about-img" src="./pictures/about.png" alt="about">
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="hidden hidden-right">
+                <span class="section-title">Technical skillset</span>
+                <div class="section-content">
+                    I specialize in web application development, with a focus on frontend development. However, my ultimate goal is to become a fullstack developer.<br><br>
+
+                    I initially discovered my passion for programming while pursuing a master's degree in biology in 2019. I enjoyed it so much that I decided to undertake a 
+                    two-year degree in web application development. Alongside my formal education, I have also enhanced my skills through online resources and personal 
+                    projects, which can be found on this website.<br><br>
+
+                    With my background in programming, web development, data analysis, data management, science, and research, I have a diverse set of skills 
+                    that I bring to every project I work on. As a web developer, I have had the opportunity to acquire a diverse set of technical skills, including great 
+                    experience in various programming languages, familiarity with database management systems, and the ability to write clean, reusable and well-documented code. 
+                    Additionally, I have experience with responsive design and the ability to troubleshoot and debug code.<br><br>
+
+                    Here, you can have a look to the technologies I use to develope my projects: <br><br>
+                    <div id="technologies-container"></div>
+                </div>
+            </section>            
+            <section class="hidden hidden-left">
+                <span class="section-title">Academic background</span>
+                <div class="section-content degree-section">
+                    <div class="degree-container">
+                        <div class="degree-container-left">
+                            <span class="degree-time degree-end">2022</span>
+                            <div class="degree-time-line"></div>
+                            <span class="degree-time degree-start">2020</span>                             
+                        </div>             
+                        <div class="degree-container-right">
+                            <span class="degree-title">Web Applications Development</span><br>
+                            <span class="degree-type">Higher education degree</span><br>
+                            <span class="degree-school">Ilerna (Spain)</span>
+                        </div>           
+                    </div>                                        
+                    <div class="degree-container">
+                        <div class="degree-container-left">                            
+                            <span class="degree-time degree-end">2020</span>
+                            <div class="degree-time-line"></div>
+                            <span class="degree-time degree-start">2019</span>                             
+                        </div>                             
+                        <div class="degree-container-right">
+                            <span class="degree-title">Terrestrial Ecology & Biodiversity Management</span><br>
+                            <span class="degree-type">Master of Science degree</span><br>
+                            <span class="degree-school">Autonomous University of Barcelona (Spain)</span>
+                        </div>            
+                    </div>
+                    <div class="degree-container">
+                        <div class="degree-container-left">
+                            <span class="degree-time degree-end">2018</span>
+                            <div class="degree-time-line"></div>
+                            <span class="degree-time degree-start">2014</span>                             
+                        </div>
+                        <div class="degree-container-right">
+                            <span class="degree-title">Biology</span><br>
+                            <span class="degree-type">Bachelor of Science degree</span><br>
+                            <span class="degree-school">University of Girona (Spain)</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="hidden hidden-right">
+                <span class="section-title">Soft skills</span>
+                <div class="section-content">                    
+                    I place a very high value on the soft skills I have developed throughout my career, because I believe that they contribute to a 
+                    positive work environment and can enhance the productivity of a team. From all of them, I highlight the following:
+                </div>
+                <div class="section-content skills">
+                    <div class="skill-container">
+                        <img src="pictures/team.svg" alt="Team work" class="skill-picture">
+                        <span class="skill-title">Team work</span>
+                    </div>
+                    <div class="skill-container">
+                        <img src="pictures/critical-thinking.svg" alt="Critical thinking" class="skill-picture">
+                        <span class="skill-title">Critical thinking</span>
+                    </div>
+                    <div class="skill-container">
+                        <img src="pictures/deadlines.svg" alt="Meet deadlines" class="skill-picture">
+                        <span class="skill-title">time management</span>                        
+                    </div>
+                    <div class="skill-container">
+                        <img src="pictures/comunication.svg" alt="Comunicative" class="skill-picture">
+                        <span class="skill-title">Comunicative</span>
+                    </div>
+                    <div class="skill-container">
+                        <img src="pictures/problem-solving.svg" alt="Problem solving" class="skill-picture">
+                        <span class="skill-title">Problem solving</span>
+                    </div>
+                    <div class="skill-container">
+                        <img src="pictures/adaptability.svg" alt="Adaptability" class="skill-picture">
+                        <span class="skill-title">Adaptability</span>
+                    </div>
+                </div>
+            </section>
+            <section class="hidden hidden-left">
+                <span class="section-title">Would you like to know more about me?</span><br>
+                <div id="cv-button-container">                    
+                    <a href="Pablo Fernandez - CV.pdf" id="cv-button" download="Pablo Fernandez - CV">Get my CV</a><br>
+                    <span id="cv-button-subtext">Contact details <a href="../contact/contact.php">here</a></span>
+                </div>
+            </section>
+        </main>
     </div>    
 </body>
 </html>

@@ -10,13 +10,13 @@ window.addEventListener("load", function(){
         window.location.href = "/portfolio/about/about.html";
     });
     document.getElementById("contact-button")?.addEventListener("click", () => {
-        window.location.href = "/portfolio/contact/contact.html";
+        window.location.href = "/portfolio/contact/contact.php";
     });
     
     // --------------------------------- URLs TO CONTACT ICONS (section) -----------------------------------------
     // Add URL to contact icons
     document.querySelector("#location-img")?.addEventListener("click", function(){
-        window.open("https://www.google.com/maps/place/88682+Salem/@47.7705336,9.2936284,12z/data=!3m1!4b1!4m5!3m4!1s0x479a573b01421c2f:0x41f6bb7a5df84e0!8m2!3d47.7621271!4d9.2940477", "_blank")?.focus();
+        window.open("https://goo.gl/maps/GfhU9KLJfmUDT4a39", "_blank")?.focus();
     });
     document.querySelector("#github-img")?.addEventListener("click", function(){
         window.open("https://github.com/pabloff95", "_blank")?.focus();

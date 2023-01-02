@@ -9,7 +9,7 @@ body, html{
 }
 main{
     display: grid;
-    grid-template-columns: max(12.5%, 100px) auto;
+    grid-template-columns: max(calc(10vw + 5%), 100px) auto;
     height: 100%;
     width: 100%;
 }
@@ -23,52 +23,6 @@ nav{
 /*---------------------------------------------------------------------*/
 /*----------------------------- LEFT MENU -----------------------------*/
 /*---------------------------------------------------------------------*/
-
-/*--------------------------- GEOMETRIC SHAPE --------------------------*/
-#design-container{
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-#logo-2{
-    display: none;
-}
-#square{
-    position: relative;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(45deg);
-    box-shadow:  6px -6px black, 
-                 12px -12px 10px var(--main),
-                 -6px 6px black, 
-                 -12px 12px 10px var(--main);
-    border: 3.5px white solid;
-    border-radius: 2.5px;
-    background-color: transparent;    
-}
-#square:hover{
-    animation-name: squareHover;
-    animation-duration: 0.5s;
-    animation-timing-function: ease-in;
-    box-shadow:  6px -6px black, 
-                 12px -12px 10px var(--contrast),
-                 -6px 6px black, 
-                 -12px 12px 10px var(--contrast);
-}
-@keyframes squareHover {
-    from {
-        box-shadow:  6px -6px black, 
-                 12px -12px 10px var(--main),
-                 -6px 6px black, 
-                 -12px 12px 10px var(--main);
-    }
-    to{
-        box-shadow:  6px -6px black, 
-                 12px -12px 10px var(--contrast),
-                 -6px 6px black, 
-                 -12px 12px 10px var(--contrast);
-    }
-}
 
 /*---------------------------------------------------------------------*/
 /*----------------------------- BUTTON SECTION --------------------*/
@@ -150,7 +104,7 @@ header{
     flex-direction: row;
     flex-wrap: wrap;
     height: 100%;
-    align-content: baseline;
+    align-content: center;
 }
 #header-text-container{
     position: relative;
@@ -317,32 +271,39 @@ canvas{
 /*---------------------------------------------------------------------*/
 /*----------------------------- LOGO SECTION --------------------*/
 #logo{
-    width: 100%;
-    position: absolute;
-    bottom: 3%;
-    right: 3%;
+    width: 100%;    
+    /*Do not allow text selection*/
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none;
 }
 #logo-container{
     display: flex;
     flex-direction: column;
-    text-align: right;
+    text-align: center;
     justify-content: center;
 }
 #logo-main-container{
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: right;
+    justify-content: center;
 }
 #logo-main-container p{
     margin: 0;
     width: fit-content;
-    /*Font*/
-    font-size: 4vmax;
+    /*Font*/    
     font-family: 'Raleway', sans-serif;
+    font-weight: bolder;
     color: white;
     text-shadow: 4.5px 4.5px var(--main-dark);  
-    -webkit-text-stroke: 1px var(--bg-color); 
+    -webkit-text-stroke: 1px var(--bg-color);    
+}
+.logo-side{
+    font-size: 4vmax;    
 }
 #logo-main{
     font-size: 6vmax;
@@ -426,47 +387,99 @@ canvas{
 
 /*Mediun + small devices*/
 @media all and (max-width: 768px){
-    main{
-        display: unset;  
+    /*Body - html*/
+    html,body{
+        all:unset;
+        display: flex;
+        flex-direction: column;          
+        overflow: auto;
+        margin: 0;
+        padding: 0;
+        z-index: -50;
+        background-color: var(--bg-color);
+        position: relative;
+        height: 100%;
     }
-    #design-container, footer{
+    main{
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+    }
+    
+    /*TOP MENU --> Move menu to top, remove elements*/
+    nav{
+        all: unset;
+        background-color: black;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+    }
+    footer{
         display: none;
     }
-    #logo-2{
-        display: block;
+
+    /*Logo*/
+    .logo-side{
+        display: none;
     }
     #logo{
+        width: fit-content;
+        margin-left: 5%;
+    }
+    #logo-main-container p {
+        font-size: 5vmax;
+    }
+    #logo-main{
+        font-size: 5vmax;
+    }
+    #logo-text{
         display: none;
+    } 
+
+    /*Main title*/    
+    .main-letter{
+        all: unset;
+        color: var(--main);        
+        z-index: 2;
+        text-shadow: 1px 1px 0 var(--main-dark);
+    }    
+    .main-letter:hover{
+        color: var(--contrast);        
+        text-shadow: 1px 1px 0 red;
     }
-    nav{
-        height: fit-content;
-        grid-template-rows: 100%;
-        grid-template-columns: 20% 80%;
-        padding: 2% 0;
-    }
-    #header-content {       
-        top: unset;
-        transform: unset;
-     }
+    /*buttons*/
     #buttons{
         flex-direction: row;
-        justify-content: center;
-        text-align: center;        
+        justify-content: flex-end;
+        text-align: center;     
+        margin: auto 1%;
     }
     .menu-button{
-        width: 25%;
+        all: unset;
+        font-family: var(--font);
+        font-size: 1.5vmax;
+        font-weight: 800;
+        cursor: pointer;        
+        padding: 2%;
+        margin: 0 2.5%;
+        border-radius: 2.5px;
         height: fit-content;
-        padding: 3.5% 0;
-        font-size: calc(0.5rem + 1.25vmax);
-        margin:  auto 0.5%;
-        box-shadow: inset 0px 3px 0px var(--main-dark);        
+        color: black;
+        background-color: var(--main);               
     }
     .menu-button:hover{
-        box-shadow: inset 0px 3px 0px var(--contrast);
-    }
-    .social-media{
-        width: 70%;
-        height: 70%;
+        all: unset;
+        font-family: var(--font);
+        font-size: 1.5vmax;
+        font-weight: 800;
+        cursor: pointer;       
+        padding: 2%;
+        margin: 0 2.5%;
+        height: fit-content;
+        border-radius: 2.5px;
+        /*hover effects*/
+        background: var(--contrast);              
     }
     #header-text-container{
         margin: 10% 0%
@@ -474,37 +487,19 @@ canvas{
     #right-side{
         margin-top: 5%;
     }
-
-    /*Logo on top menu button appear*/
-    #logo-2{
-        width: 100%;     
-        height: 100%;   
-        display: flex;        
-        text-align: right;
-        justify-content: center;
+    /*Main title elements*/
+    #header-content {       
+        top: 25%;
+        transform: translateY(-25%);
+     }
+    #page-title{
+        font-size: calc(1rem + 5vw);
     }
-    #logo-main-container-2{
-        width: 100%;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
+    #page-subtitle{
+        font-size: calc(0.75rem + 2.5vw);
     }
-    #logo-main-container-2 p{
-        margin: 0;        
-        /*Font*/
-        font-size: 5vmax;
-        font-family: 'Raleway', sans-serif;
-        color: white;
-        text-shadow: 4.5px 4.5px var(--main-dark);  
-        -webkit-text-stroke: 1px var(--bg-color); 
-    }
-    #logo-main-2{
-        font-size: 7vmax;
-    }
-    #logo-main-container-2 p:hover{
-        animation-name: logoAnimation;
-        animation-duration: 0.5s;
-        animation-timing-function: ease-in;
+    #code-img{
+        font-size: calc(0.5rem + 3.25vw);
     }
 }
 
